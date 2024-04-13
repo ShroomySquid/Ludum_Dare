@@ -19,3 +19,4 @@ offset = Vector2(960, 540)
 [node name="View" parent="." instance=ExtResource("3_gmkf1")]
 
 [node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
+initial_position = 2

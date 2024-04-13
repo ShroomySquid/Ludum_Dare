@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cecoa35ps282h"]
+
+[node name="intro_window" type="Window"]

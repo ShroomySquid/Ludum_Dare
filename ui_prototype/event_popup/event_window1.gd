@@ -12,13 +12,22 @@ func _process(delta):
 	pass
 
 
-
-
-
-func _on_event_button_2_b_2_pressed():
-	
+func _on_event_b1():
+	print("b1")
+	self.hide()
+	emit_signal("event_window_done")
 	pass # Replace with function body.
 
 
-func _on_event_button_1_b_1_pressed():
+func _on_event_b2():
+	print("b2")
+	self.hide()
+	emit_signal("event_window_done")
+	pass # Replace with function body.
+
+
+func _on_event_b3():
+	print("b3")
+	self.hide()
+	emit_signal("event_window_done")
 	pass # Replace with function body.
