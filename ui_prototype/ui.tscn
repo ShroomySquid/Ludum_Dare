@@ -110,3 +110,19 @@ offset_left = 169.0
 offset_top = 155.0
 offset_right = 252.062
 offset_bottom = 186.0
+
+[node name="Job_Send_Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 209.0
+offset_right = 168.0
+offset_bottom = 278.0
+text = "Assign cultist
+to A&W"
+label_settings = SubResource("LabelSettings_srj8g")
+
+[node name="Job_Send" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 229.0
+offset_right = 252.062
+offset_bottom = 260.0
