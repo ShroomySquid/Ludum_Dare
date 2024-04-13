@@ -45,7 +45,22 @@ func _process(delta):
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	global_timer += delta
 	if (global_timer >= 900):
-		print("Game complete.")
+		if (resources.get_re(Resources.r.MAGIC) >= 1000000):
+			print("cori tier")
+		elif (resources.get_re(Resources.r.MAGIC) >= 100000):
+			print("damn good")
+		elif (resources.get_re(Resources.r.MAGIC) >= 10000):
+			print("fine")
+		elif (resources.get_re(Resources.r.MAGIC) >= 1000):
+			print("trash")
+		elif (resources.get_re(Resources.r.MAGIC) >= 1000):
+			print("you really bloody suck")
+		elif (resources.get_re(Resources.r.MAGIC) >= 100):
+			print("you didn't even try")
+		elif (resources.get_re(Resources.r.MAGIC) >= 10):
+			print("you had to try to be this bad")
+		elif (resources.get_re(Resources.r.MAGIC) >= 1):
+			print("how")
 	if (resources.get_re(Resources.r.MAGIC) >= cultists_in_ritual * 100):
 		resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta)
 	else:
@@ -66,3 +81,4 @@ func _process(delta):
 		peak_magic = resources.get_re(Resources.r.MAGIC)
 	if (resources.get_re(Resources.r.MAGIC) < peak_magic / 2):
 		resources.sub_re(Resources.r.LOYALTY, delta)
+	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta)
