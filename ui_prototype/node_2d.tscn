@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://n1e4vd3wmgj4"]
+[gd_scene load_steps=6 format=3 uid="uid://n1e4vd3wmgj4"]
 
 [ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://background.png" id="1_paqku"]
 [ext_resource type="Script" path="res://Control.gd" id="2_0n34u"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
 font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtqf8"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -38,6 +41,25 @@ offset_right = 629.0
 offset_bottom = 67.0
 text = "Magic:"
 label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="loyalty_label" type="Label" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1140.0
+offset_bottom = 67.0
+text = "Loyalty:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="loyalty_bar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 8.0
+offset_right = 1340.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_rtqf8")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(256, 64)
