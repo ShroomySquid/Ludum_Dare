@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtyp8htqy4fd2"]
+[gd_scene load_steps=7 format=3 uid="uid://dtyp8htqy4fd2"]
 
-[ext_resource type="Script" path="res://even_first_button.gd" id="1_5mu0g"]
-[ext_resource type="Script" path="res://event_window.gd" id="1_mxji7"]
+[ext_resource type="Script" path="res://event_popup/event_button1.gd" id="1_5mu0g"]
+[ext_resource type="Script" path="res://event_popup/event_window1.gd" id="1_mxji7"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_xx7rv"]
+[ext_resource type="Script" path="res://event_popup/event_button2.gd" id="4_bigwu"]
 
 [sub_resource type="Theme" id="Theme_hsa87"]
 
 [sub_resource type="Theme" id="Theme_lswx8"]
 
-[node name="event_window" type="Window"]
+[node name="event_window1" type="Window"]
 title = "New event"
 initial_position = 1
 size = Vector2i(500, 300)
@@ -28,7 +29,7 @@ This is a big pile of text that makes no sense, so please stop reading
 it."
 justification_flags = 0
 
-[node name="event_first_button" type="Button" parent="."]
+[node name="event_button1" type="Button" parent="."]
 offset_left = 50.0
 offset_top = 250.0
 offset_right = 127.0
@@ -36,5 +37,14 @@ offset_bottom = 281.0
 text = "wwwerw"
 script = ExtResource("1_5mu0g")
 
-[connection signal="pressed" from="event_first_button" to="." method="_on_event_first_button_pressed"]
-[connection signal="pressed" from="event_first_button" to="event_first_button" method="_on_pressed"]
+[node name="event_button2" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("4_bigwu")
+
+[node name="event_button3" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="event_button1" to="." method="_on_event_first_button_pressed"]
+[connection signal="pressed" from="event_button1" to="event_button1" method="_on_pressed"]

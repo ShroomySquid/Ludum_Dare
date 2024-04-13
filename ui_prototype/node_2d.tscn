@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://background.png" id="1_paqku"]
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="2_iytib"]
 [ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="3_gmkf1"]
-[ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_window.tscn" id="4_t7hkk"]
+[ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="4_t7hkk"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,4 +17,4 @@ offset = Vector2(960, 540)
 
 [node name="View" parent="." instance=ExtResource("3_gmkf1")]
 
-[node name="event_window" parent="." instance=ExtResource("4_t7hkk")]
+[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
