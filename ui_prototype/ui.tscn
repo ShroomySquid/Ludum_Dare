@@ -27,7 +27,7 @@ clip_contents = true
 layout_mode = 0
 offset_right = 72.0
 offset_bottom = 23.0
-text = "Cultists:"
+text = "Available cultists:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="magic_label" type="Label" parent="."]
@@ -76,7 +76,7 @@ offset_top = 67.0
 offset_right = 152.0
 offset_bottom = 136.0
 text = "Assign cultist
-to ritual."
+to ritual"
 label_settings = SubResource("LabelSettings_srj8g")
 
 [node name="Cultist_Send" type="SpinBox" parent="."]
@@ -85,3 +85,19 @@ offset_left = 169.0
 offset_top = 92.0
 offset_right = 252.062
 offset_bottom = 123.0
+
+[node name="Recruitment_Send_Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 152.0
+offset_bottom = 205.0
+text = "Assign cultist
+to recruitment"
+label_settings = SubResource("LabelSettings_srj8g")
+
+[node name="Recruitment_Send" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 155.0
+offset_right = 252.062
+offset_bottom = 186.0
