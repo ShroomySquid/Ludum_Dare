@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://n1e4vd3wmgj4"]
+
+[ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://background.png" id="1_paqku"]
+[ext_resource type="Script" path="res://Control.gd" id="2_0n34u"]
+[ext_resource type="Texture2D" uid="uid://db7ba6ox51omc" path="res://background2.png" id="2_ykdm4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
+font_size = 48
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("1_paqku")
+offset = Vector2(960, 540)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("2_0n34u")
+
+[node name="cultist_label" type="Label" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 23.0
+text = "Cultists:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="magic_label" type="Label" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_left = 480.0
+offset_right = 629.0
+offset_bottom = 67.0
+text = "Magic:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(256, 64)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground"]
+position = Vector2(1088, 586)
+texture = ExtResource("2_ykdm4")
