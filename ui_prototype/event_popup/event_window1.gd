@@ -3,7 +3,7 @@ signal event_window_done
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#self.hide()
+	self.hide()
 	pass # Replace with function body.
 
 
@@ -30,4 +30,10 @@ func _on_event_b3():
 	print("b3")
 	self.hide()
 	emit_signal("event_window_done")
+	pass # Replace with function body.
+
+
+
+func _on_event_pop_up_bubble_signal():
+	self.show()
 	pass # Replace with function body.

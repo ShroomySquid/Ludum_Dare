@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtw641sruxwlq"]
+
+[ext_resource type="Texture2D" uid="uid://d188ree7ngeks" path="res://speech-bubble.png" id="2_tl7gs"]
+
+[sub_resource type="GDScript" id="GDScript_q62fq"]
+script/source = "extends Control
+
+signal bubble_signal
+
+
+func _on_texture_button_pressed():
+	bubble_signal.emit()
+	self.hide()
+"
+
+[node name="event_pop_up" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_q62fq")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.76, 1)
+texture_normal = ExtResource("2_tl7gs")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
