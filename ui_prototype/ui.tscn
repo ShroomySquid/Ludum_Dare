@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqh3trwm4smod"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_vbxgf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtqf8"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2tvy"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_vbxgf")
+
+[node name="cultist_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 23.0
+text = "Cultists:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="magic_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 480.0
+offset_right = 629.0
+offset_bottom = 67.0
+text = "Magic:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="loyalty_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1140.0
+offset_bottom = 67.0
+text = "Loyalty:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="loyalty_bar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 8.0
+offset_right = 1390.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_rtqf8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g2tvy")
+
+[node name="prisoners_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 1400.0
+offset_right = 1631.0
+offset_bottom = 67.0
+text = "Prisoners:"
+label_settings = SubResource("LabelSettings_l3ewh")

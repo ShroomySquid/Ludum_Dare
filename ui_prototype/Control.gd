@@ -1,7 +1,7 @@
 extends Control
 var cultist_count = 100
 var magic_count = 1000
-var loyalty_count = 0
+var loyalty_percent = 100
 var prisoners_count = 0
 
 
@@ -14,5 +14,5 @@ func _ready():
 func _process(delta):
 	$cultist_label.text = "Cultists: " + str(cultist_count)
 	$magic_label.text = "Magic: " + str(magic_count)
-	$loyalty_bar.value = loyalty_count
+	$loyalty_bar.value = loyalty_percent
 	$prisoners_label.text = "Prisoners: " + str(prisoners_count)
