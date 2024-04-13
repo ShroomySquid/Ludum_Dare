@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://pwckow83ys5o"]
+
+[ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://png/background.png" id="1_5h5cx"]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="TitleBackground" type="Sprite2D" parent="."]
+position = Vector2(1002, 544)
+scale = Vector2(1.17083, 1.02813)
+texture = ExtResource("1_5h5cx")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 550.0
+offset_top = 400.0
+offset_right = 1396.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+
+[node name="OptionButton" type="Button" parent="."]
+offset_left = 550.0
+offset_top = 700.0
+offset_right = 1396.0
+offset_bottom = 899.0
+theme_override_font_sizes/font_size = 40
+text = "Options
+"
