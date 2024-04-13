@@ -12,7 +12,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	magic_count -= delta * cultist_count
+	if (int(magic_count) == 0):
+		print("Dead you are, try again you must.")
 	$cultist_label.text = "Cultists: " + str(cultist_count)
-	$magic_label.text = "Magic: " + str(magic_count)
+	$magic_label.text = "Magic: " + str(int(magic_count))
 	$loyalty_bar.value = loyalty_percent
 	$prisoners_label.text = "Prisoners: " + str(prisoners_count)
