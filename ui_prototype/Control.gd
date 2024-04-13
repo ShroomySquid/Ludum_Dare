@@ -3,6 +3,7 @@ var available_cultists = 0
 var total_cultists = 20
 var magic_count = 1000
 var loyalty_percent = 100
+var money_count = 10000
 var prisoners_count = 0
 var cultists_in_ritual = 10
 var cultists_in_recruitment = 0
@@ -45,7 +46,8 @@ func _process(delta):
 	if (int(magic_count) == 0):
 		print("Dead you are, try again you must.")
 	available_cultists = total_cultists - cultists_in_ritual - cultists_in_recruitment
-	$cultist_label.text = "Available cultists: " + str(available_cultists)
+	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(total_cultists)
 	$magic_label.text = "Magic: " + str(int(magic_count))
 	$loyalty_bar.value = loyalty_percent
 	$prisoners_label.text = "Prisoners: " + str(prisoners_count)
+	$money_label.text = "Money: " + str(money_count)

@@ -27,7 +27,7 @@ clip_contents = true
 layout_mode = 0
 offset_right = 72.0
 offset_bottom = 23.0
-text = "Available cultists:"
+text = "Cultists:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="magic_label" type="Label" parent="."]
@@ -68,6 +68,15 @@ offset_left = 1400.0
 offset_right = 1631.0
 offset_bottom = 67.0
 text = "Prisoners:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="money_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 1880.0
+offset_right = 2054.0
+offset_bottom = 67.0
+text = "Money:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="Cultist_Send_Label" type="Label" parent="."]

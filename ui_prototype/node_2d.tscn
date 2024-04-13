@@ -9,6 +9,7 @@
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+scale = Vector2(2, 2)
 texture = ExtResource("1_paqku")
 offset = Vector2(960, 540)
 
