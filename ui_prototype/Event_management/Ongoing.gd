@@ -1,4 +1,4 @@
-class_name event_container
+class_name Event_container
 extends Node
 
 #maybe not
