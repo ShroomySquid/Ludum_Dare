@@ -1,11 +1,13 @@
 extends Control
 var available_cultists = 0
-var total_cultists = 10
+var total_cultists = 20
 var magic_count = 1000
 var loyalty_percent = 100
 var prisoners_count = 0
 var cultists_in_ritual = 10
 var cultists_in_recruitment = 0
+var global_timer = 0
+var new_cultist_counter = 0
 
 func _cultists_in_ritual(value: float):
 	cultists_in_ritual = $Cultist_Send.value
@@ -29,10 +31,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	global_timer += delta
+	if (global_timer >= 900):
+		print("Game complete.")
 	if (magic_count >= cultists_in_ritual * 100):
 		magic_count -= (magic_count - cultists_in_ritual * 100) * delta
 	else:
-		magic_count += (cultists_in_ritual * 100 - magic_count) * delta
+		magic_count += (cultists_in_ritual * 100 - magic_count) * delta / 20
+	new_cultist_counter += cultists_in_recruitment * delta
+	if (new_cultist_counter >= 300):
+		new_cultist_counter = 0
+		total_cultists += 1
 	if (int(magic_count) == 0):
 		print("Dead you are, try again you must.")
 	available_cultists = total_cultists - cultists_in_ritual - cultists_in_recruitment
