@@ -5,11 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="3_gmkf1"]
 [ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="4_t7hkk"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Untitled Cult Game" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+scale = Vector2(2, 2)
 texture = ExtResource("1_paqku")
 offset = Vector2(960, 540)
 

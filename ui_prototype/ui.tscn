@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqh3trwm4smod"]
+[gd_scene load_steps=6 format=3 uid="uid://dqh3trwm4smod"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_vbxgf"]
 
@@ -11,11 +11,15 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2tvy"]
 bg_color = Color(0, 1, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_srj8g"]
+line_spacing = 1.0
+font_size = 24
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 2560.0
+offset_bottom = 1440.0
 script = ExtResource("1_vbxgf")
 
 [node name="cultist_label" type="Label" parent="."]
@@ -65,3 +69,60 @@ offset_right = 1631.0
 offset_bottom = 67.0
 text = "Prisoners:"
 label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="money_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 1880.0
+offset_right = 2054.0
+offset_bottom = 67.0
+text = "Money:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="Cultist_Send_Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 152.0
+offset_bottom = 136.0
+text = "Assign cultist
+to ritual"
+label_settings = SubResource("LabelSettings_srj8g")
+
+[node name="Cultist_Send" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 92.0
+offset_right = 252.062
+offset_bottom = 123.0
+
+[node name="Recruitment_Send_Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 152.0
+offset_bottom = 205.0
+text = "Assign cultist
+to recruitment"
+label_settings = SubResource("LabelSettings_srj8g")
+
+[node name="Recruitment_Send" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 155.0
+offset_right = 252.062
+offset_bottom = 186.0
+
+[node name="Job_Send_Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 209.0
+offset_right = 168.0
+offset_bottom = 278.0
+text = "Assign cultist
+to A&W"
+label_settings = SubResource("LabelSettings_srj8g")
+
+[node name="Job_Send" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 229.0
+offset_right = 252.062
+offset_bottom = 260.0
