@@ -18,8 +18,8 @@ font_size = 24
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 2560.0
+offset_bottom = 1440.0
 script = ExtResource("1_vbxgf")
 
 [node name="cultist_label" type="Label" parent="."]
