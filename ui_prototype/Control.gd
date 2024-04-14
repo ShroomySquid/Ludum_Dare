@@ -1,4 +1,5 @@
 extends Control
+class_name GAME
 @onready var menu = $"../Menu"
 var resources: Resource_container = Resource_container.new()
 var available_cultists = 0
@@ -57,6 +58,20 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
+	available_cultists = resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_recruitment - cultists_in_job
+	if available_cultists < 0:
+		if cultists_in_job + available_cultists >= 0:
+			cultists_in_job += available_cultists
+			$Job_Send.value = cultists_in_job
+		elif cultists_in_ritual + available_cultists >= 0:
+			cultists_in_ritual += available_cultists
+			$Cultist_Send.value = cultists_in_ritual
+		elif cultists_in_recruitment + available_cultists >= 0:
+			cultists_in_recruitment += available_cultists
+			$Job_Send.value = cultists_in_recruitment
+		available_cultists = 0
+		if resources.get_re(Resources.r.CULTISTS) == 0:
+			print("There are no cultists left. You suck")
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	global_timer += delta
 	if (global_timer >= 900):
@@ -86,7 +101,6 @@ func _process(delta):
 		resources.add_re(Resources.r.CULTISTS, 1)
 	if (int(resources.get_re(Resources.r.MAGIC)) == 0):
 		print("Dead you are, try again you must.")
-	available_cultists = resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_recruitment - cultists_in_job
 	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
 	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
 	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
