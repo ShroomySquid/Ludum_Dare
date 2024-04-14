@@ -18,7 +18,7 @@ func sub_re(r:Resources.r, i):
 		basket[r] -= i
 
 static func combine(r1:Resource_container, r2:Resource_container):
-	var r3: Resource_container
+	var r3: Resource_container = Resource_container.new()
 	for i in range(6):
 		r3.basket[i] = r1.basket[i] + r2.basket[i];
 	return r3

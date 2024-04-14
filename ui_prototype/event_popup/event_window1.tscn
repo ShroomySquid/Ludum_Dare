@@ -68,5 +68,7 @@ offset_bottom = 40.0
 [connection signal="pressed" from="event_button1" to="event_button1" method="_on_pressed"]
 [connection signal="b2_pressed" from="event_button2" to="." method="_on_event_button_2_b_2_pressed"]
 [connection signal="pressed" from="event_button2" to="." method="_on_event_b2"]
+[connection signal="pressed" from="event_button2" to="event_button2" method="_on_pressed"]
 [connection signal="b3_pressed" from="event_button3" to="." method="_on_event_button_3_b_3_pressed"]
 [connection signal="pressed" from="event_button3" to="." method="_on_event_b3"]
+[connection signal="pressed" from="event_button3" to="event_button3" method="_on_pressed"]
