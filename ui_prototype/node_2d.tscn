@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://n1e4vd3wmgj4"]
+[gd_scene load_steps=9 format=3 uid="uid://n1e4vd3wmgj4"]
 
 [ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://png/background.png" id="1_paqku"]
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="2_iytib"]
@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://diejjpsf5s6pd" path="res://Menu/menu.tscn" id="4_dhysq"]
 [ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="4_t7hkk"]
 [ext_resource type="PackedScene" uid="uid://dtw641sruxwlq" path="res://event_popup/listener_bubble.tscn" id="5_ixf3o"]
-[ext_resource type="Script" path="res://Event_management/event_manager.gd" id="7_s0rid"]
 [ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="7_cd71p"]
+[ext_resource type="Script" path="res://Event_management/event_manager.gd" id="7_s0rid"]
 
 [node name="Untitled Cult Game" type="Node2D"]
 
@@ -61,7 +61,6 @@ offset_top = 444.0
 offset_right = 1000.0
 offset_bottom = 444.0
 
-
 [node name="Event_manager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -69,10 +68,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_s0rid")
 
-[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]
-
 [node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
 
+[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up2" to="UI" method="_on_event_pop_up_bubble_signal"]
