@@ -60,6 +60,7 @@ func _ready():
 	$Recruitment_Send.value_changed.connect(self._cultists_in_recruitment)
 	$Job_Send.value = cultists_in_job
 	$Job_Send.value_changed.connect(self._cultists_in_job)
+	Engine.time_scale = 0
 
 func _endTuto():
 	is_paused = false
