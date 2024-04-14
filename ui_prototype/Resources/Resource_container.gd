@@ -23,6 +23,12 @@ static func combine(r1:Resource_container, r2:Resource_container):
 		r3.basket[i] = r1.basket[i] + r2.basket[i];
 	return r3
 
+static func compare(player:Resource_container, event:Resource_container):
+	for i in range(6):
+		if player.basket[i] + event.basket[i] < 0:
+			return false
+	return true
+
 func scale(s:int):
 	for i in range(6):
 		basket[i] *= s / 100

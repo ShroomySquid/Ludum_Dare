@@ -1,8 +1,9 @@
-class_name event_container
+class_name Event_container
 extends Node
 
 #maybe not
 var event_text = "placeholder"
+
 var event_id: int:
 	get:
 		return event_id
