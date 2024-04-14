@@ -12,18 +12,24 @@ var is_paused = true
 var in_intro = true
 
 func _cultists_in_ritual(value: float):
+	if (is_paused == true):
+		$Cultist_Send.value = cultists_in_ritual
 	cultists_in_ritual = $Cultist_Send.value
 	if (cultists_in_ritual > resources.get_re(Resources.r.CULTISTS) - cultists_in_recruitment - cultists_in_job):
 		cultists_in_ritual = resources.get_re(Resources.r.CULTISTS) - cultists_in_recruitment - cultists_in_job
 	$Cultist_Send.value = cultists_in_ritual
 
 func _cultists_in_recruitment(value: float):
+	if (is_paused == true):
+		$Recruitment_Send.value = cultists_in_recruitment
 	cultists_in_recruitment = $Recruitment_Send.value
 	if (cultists_in_recruitment > resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_job):
 		cultists_in_recruitment = resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_job
 	$Recruitment_Send.value = cultists_in_recruitment
 
 func _cultists_in_job(value: float):
+	if (is_paused == true):
+		$Job_Send.value = cultists_in_job
 	cultists_in_job = $Job_Send.value
 	if (cultists_in_job > resources.get_re(Resources.r.CULTISTS) - cultists_in_recruitment - cultists_in_ritual):
 		cultists_in_job = resources.get_re(Resources.r.CULTISTS) - cultists_in_recruitment - cultists_in_ritual
@@ -51,7 +57,7 @@ func _ready():
 	resources.set_re(Resources.r.LOYALTY, 100)
 	resources.set_re(Resources.r.PRISONERS, 0)
 	resources.set_re(Resources.r.GOLD, 10000)
-	$Cultist_Send.value = 10
+	$Cultist_Send.value = cultists_in_ritual
 	$Cultist_Send.value_changed.connect(self._cultists_in_ritual)
 	$Recruitment_Send.value = cultists_in_recruitment
 	$Recruitment_Send.value_changed.connect(self._cultists_in_recruitment)
