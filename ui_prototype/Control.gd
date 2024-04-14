@@ -9,7 +9,6 @@ var cultists_in_job = 0
 var global_timer = 0
 var new_cultist_counter = 0
 var is_paused = true
-var in_intro = true
 
 func _cultists_in_ritual(value: float):
 	cultists_in_ritual = $Cultist_Send.value
@@ -30,10 +29,6 @@ func _cultists_in_job(value: float):
 	$Job_Send.value = cultists_in_job
 
 func pauseMenu():
-	if in_intro:
-		is_paused = true
-		Engine.time_scale = 0
-		pass
 	if is_paused:
 		is_paused = false
 		Engine.time_scale = 1
@@ -42,6 +37,7 @@ func pauseMenu():
 		is_paused = true
 		Engine.time_scale = 0
 		menu.show()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -57,7 +53,6 @@ func _ready():
 	$Recruitment_Send.value_changed.connect(self._cultists_in_recruitment)
 	$Job_Send.value = cultists_in_job
 	$Job_Send.value_changed.connect(self._cultists_in_job)
-	pauseMenu()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
