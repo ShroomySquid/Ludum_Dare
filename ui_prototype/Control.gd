@@ -2,7 +2,7 @@ extends Control
 class_name GAME
 @onready var menu = $"../Menu"
 var resources: Resource_container = Resource_container.new()
-var available_cultists = 0
+@export var available_cultists = 0
 var peak_magic = 1000
 var cultists_in_ritual = 10
 var cultists_in_recruitment = 0
