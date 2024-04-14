@@ -1,7 +1,20 @@
-[gd_scene format=3 uid="uid://cecoa35ps282h"]
+[gd_scene load_steps=3 format=3 uid="uid://cecoa35ps282h"]
+
+[ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="1_5axjo"]
+[ext_resource type="Script" path="res://Intro/intro_window.gd" id="1_a41at"]
 
 [node name="intro_window" type="Window"]
-initial_position = 1
+title = "Tutorial"
+initial_position = 2
 size = Vector2i(800, 500)
 unresizable = true
-always_on_top = true
+theme_override_fonts/title_font = ExtResource("1_5axjo")
+script = ExtResource("1_a41at")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 375.0
+offset_top = 425.0
+offset_right = 425.0
+offset_bottom = 457.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
