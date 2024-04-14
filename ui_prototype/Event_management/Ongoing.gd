@@ -2,7 +2,7 @@ class_name Event_container
 extends Node
 
 #maybe not
-var event_text = "placeholder"
+var event_text = "placeholder et je suis une banane"
 
 var event_id: int:
 	get:

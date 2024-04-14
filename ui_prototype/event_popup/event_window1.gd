@@ -42,5 +42,12 @@ func _on_event_b3():
 func _on_event_pop_up_bubble_signal():
 	loaded_event = Event_container.new()
 	$event_text.text = loaded_event.event_text
+	loaded_event.resources.set_re(Resources.r.CULTISTS, -2)
+	$event_button1.load_cost(loaded_event.resources)
+	loaded_event.resources.set_re(Resources.r.CULTISTS, 0)
+	loaded_event.resources.set_re(Resources.r.MAGIC, -500)
+	$event_button2.load_cost(loaded_event.resources)
+	loaded_event.resources.set_re(Resources.r.MAGIC, -1500)
+	$event_button3.load_cost(loaded_event.resources)
 	self.show()
 	pass # Replace with function body.
