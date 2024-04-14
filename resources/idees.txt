@@ -1,0 +1,152 @@
+Brainstorm histoire + event
+
+5 généraux:
+-Grand invocateur (spécialiste magie/rituel d’invocation)
+-Grand inquisiteur (Spécialiste de recrutement)
+-Grand aumônier (Spécialiste du cash)
+-Psycho-Prêtre (Spécialiste de la loyauté)
+-Espion-prêtre (Prêtre infiltré dans le gouvernement & niveau de suspicion)
+-Historio-Prêtre (Prêtre spécialiste du lore)
+
+Events Générique:
+- + —> rajoute
+- ++ —> rajoute bcp
+- +++ —> rajoute énormément
+- - —> enlève
+- - - —> enlève bcp
+- - - - —>enlève énormément
+- R —> réussite
+- E —> échec
+- C —> réussite partielle
+- A: augmente les chances de réussites
+- A++: augment bcp les chances de réussites
+- D: diminue les chances de réussites.
+- D++: diminue bcp les chances de réussites.
+
+Invoquer des dupliqués: 
+Event de: Grand invocateur
+Prérequis: Aucun
+Durée: 40 secondes
+R: +++cultistes
+C: ++cultistes
+E: -cultistes, -loyauté
+Demande 3 cultistes && 666 magie
+Cultists: A
+Magie: A++
+
+Convertir l’eau en or: 
+Event de: Grand invocateur
+Prérequis: Aucun
+Durée: 30 secondes
+R: +++cash
+C: ++cash
+E: -cultistes, -loyauté
+Demande 3 cultistes && 1000 magie
+Cultists: A
+Magie: A
+
+Sacrifier un prisonnier: 
+Event de: Grand invocateur
+Prérequis: 1 prisonnier
+Durée: 90 secondes
+R: +++magie, +loyauté, +suspicion
+C: ++magie,  +suspicion
+E: ++suspicion
+Demande 5 cultistes && 500 magie
+Prisonnier: A++
+Cultists: A
+Cash: A
+Magie: A
+
+Torturer un prisonnier pour <god_name>: 
+Event de: Grand inquisiteur
+Prérequis: 1 prisonnier
+Durée: 60 secondes
+R: +magie, ++loyauté, -suspicion
+C: +magie
+E: +suspicion, perd 1 prisonnier
+Demande 3 cultistes && 500$
+Cultists: A
+Cash: A
+Magie: A
+
+Faire pression auprès du gouvernement: 
+Event de: Grand inquisiteur
+Prérequis: suspicion en-dessous de 20%.
+Durée: 90 secondes
+R: +recrues, +++cash, -suspicions
+C: +cash
+E: +suspicion
+Demande 6 cultistes && 500$
+Cultists: A
+Magie: D/A (random?)
+
+Faire un speech dans la place publique: 
+Event de: Grand inquisiteur
+Prérequis: suspicion en-dessous de 50%.
+Durée: 60 secondes
+R: ++recrues, +suspicion
+C: +recrus, +suspicion
+E: +recrus, ++suspicion)
+Demande 3 cultistes && 1000$
+Cultists: A
+Magie: A++
+
+Organiser un festin: 
+Event de: Grand-Aumonier
+Prérequis: Aucun
+Durée: 50 secondes
+R: +++loyauté, -suspicion
+C: ++loyauté
+E: NULL
+Demande: 8 cultistes, 2000$
+Cultists: A
+Cash: A
+Magie: D/A
+
+Quémander les fidèles: 
+Event de: Grand-Aumonier
+Prérequis: loyauté au moins 25%
+Durée: 45 secondes
+R: ++cash
+C: +cash, -loyauté
+E: -loyauté
+Demande: 2 cultistes
+Cultists: A
+
+Agrandir l’espace rituel: 
+Event de: Grand-Aumonier
+Prérequis: au moins X cultistes de plus qu’au début
+Durée: 180 secondes
+R: +++magie
+C: ++magie
+E: +magie, -cultistes, -loyauté
+Demande 5 cultistes && 5000$
+Cultists: A
+Cash: A
+
+Séances de prièro-thérapie: 
+Event de: Psycho-Prêtre
+Prérequis: Aucun
+Durée: 60 secondes
+R: +++loyauté, +cultistes
+C: ++loyauté
+E: -cash
+Demande 2 cultistes && 1000$
+Cultists: A
+Cash: A
+Magie: A
+
+Kidnapping: 
+Event de: Psycho-Prêtre
+Prérequis: suspicion en dessous de 75%
+Durée: 60 secondes
+R: ++prisonniers
+C: +prisonniers, +suspicions
+E: -cultistes, ++suspicions
+Demande 7 cultistes && 1250$
+Cultists: A
+Cash: A++
+Magie: A
+
+

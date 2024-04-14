@@ -5,13 +5,13 @@ var basket = [0, 0, 0, 0, 0, 0]
 func get_re(r:Resources.r):
 	return basket[r]
 
-func set_re(r:Resources.r, i:int):
+func set_re(r:Resources.r, i):
 	basket[r] = i
 
-func add_re(r:Resources.r, i:int):
+func add_re(r:Resources.r, i):
 	basket[r] += i
 
-func sub_re(r:Resources.r, i:int):
+func sub_re(r:Resources.r, i):
 	if i >= basket[r]:
 		basket[r] = 0
 	else:
