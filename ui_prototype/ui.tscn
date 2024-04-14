@@ -10,7 +10,7 @@ font_size = 48
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2tvy"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_srj8g"]
 line_spacing = 1.0
@@ -22,6 +22,11 @@ anchors_preset = 0
 offset_right = 2560.0
 offset_bottom = 1440.0
 script = ExtResource("1_vbxgf")
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(2600, 65)
+layout_mode = 0
+color = Color(0, 0.4, 0.4, 1)
 
 [node name="cultist_label" type="Label" parent="."]
 clip_contents = true
@@ -86,59 +91,83 @@ theme_override_fonts/font = ExtResource("2_a410q")
 text = "Money:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 75.0
+offset_right = 514.0
+offset_bottom = 210.0
+color = Color(0, 0.4, 0.4, 1)
+
 [node name="Cultist_Send_Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 67.0
-offset_right = 152.0
-offset_bottom = 136.0
-scale = Vector2(2, 2)
+offset_left = 18.0
+offset_top = 75.0
+offset_right = 274.0
+offset_bottom = 108.0
+scale = Vector2(1.9, 1.9)
 theme_override_fonts/font = ExtResource("2_a410q")
-text = "Assign cultist
-to ritual"
+text = "Assign cultist to ritual:"
 label_settings = SubResource("LabelSettings_srj8g")
 
 [node name="Cultist_Send" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 76.0
-offset_right = 399.062
-offset_bottom = 107.0
+offset_left = 18.0
+offset_top = 145.0
+offset_right = 268.0
+offset_bottom = 176.0
 scale = Vector2(2, 2)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 225.0
+offset_right = 514.0
+offset_bottom = 360.0
+color = Color(0, 0.4, 0.4, 1)
 
 [node name="Recruitment_Send_Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 400.0
-offset_right = 168.0
-offset_bottom = 469.0
-scale = Vector2(2, 2)
+offset_left = 18.0
+offset_top = 225.0
+offset_right = 345.0
+offset_bottom = 258.0
+scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("2_a410q")
-text = "Assign cultist
-to recruitment"
+text = "Assign cultist to recruitment:"
 label_settings = SubResource("LabelSettings_srj8g")
 
 [node name="Recruitment_Send" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 311.0
-offset_top = 413.0
-offset_right = 394.062
-offset_bottom = 444.0
+offset_left = 18.0
+offset_top = 295.0
+offset_right = 268.0
+offset_bottom = 326.0
 scale = Vector2(2, 2)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 375.0
+offset_right = 514.0
+offset_bottom = 510.0
+color = Color(0, 0.4, 0.4, 1)
 
 [node name="Job_Send_Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 792.0
-offset_right = 168.0
-offset_bottom = 861.0
-scale = Vector2(2, 2)
+offset_left = 18.0
+offset_top = 375.0
+offset_right = 267.0
+offset_bottom = 408.0
+scale = Vector2(1.9, 1.9)
 theme_override_fonts/font = ExtResource("2_a410q")
-text = "Assign cultist
-to A&W"
+text = "Assign cultist to A&W:"
 label_settings = SubResource("LabelSettings_srj8g")
 
 [node name="Job_Send" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 843.0
-offset_right = 395.062
-offset_bottom = 874.0
+offset_left = 18.0
+offset_top = 445.0
+offset_right = 268.0
+offset_bottom = 476.0
 scale = Vector2(2, 2)
