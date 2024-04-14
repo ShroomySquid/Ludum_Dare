@@ -13,13 +13,13 @@ func load_cost(r: Resource_container):
 
 func _on_pressed():
 	print("hello")
-	par.UI.resources = Resource_container.combine(par.UI.resources, cost)
+	#par.UI.resources = Resource_container.combine(par.UI.resources, cost)
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (!Resource_container.compare(par.UI.resources, cost)):
+	if (!Resource_container.compare(par.UI.resources, cost) || par.UI.available_cultists < - cost.get_re(Resources.r.CULTISTS)):
 		disabled = true
 	else:
 		disabled = false

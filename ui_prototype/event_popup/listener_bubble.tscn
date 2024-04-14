@@ -7,8 +7,15 @@ script/source = "extends Control
 
 signal bubble_signal
 
+var event_c: Event_container
+
+func load_event(e: Event_container):
+	event_c = e
 
 func _on_texture_button_pressed():
+	if $\"../event_window1\".active:
+		return
+	$\"../event_window1\".load_event(event_c)
 	bubble_signal.emit()
 	self.hide()
 "

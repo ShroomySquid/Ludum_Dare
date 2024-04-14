@@ -1,0 +1,296 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqg8o57sy02um"]
+
+[ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
+[ext_resource type="Script" path="res://LineEdit.gd" id="4_6dy8q"]
+[ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="4_aeki8"]
+[ext_resource type="Script" path="res://settings.gd" id="5_b2r4y"]
+[ext_resource type="Texture2D" uid="uid://cn4uwpr3kgr6w" path="res://brick.jpg" id="6_6ws0e"]
+[ext_resource type="Script" path="res://back_button.gd" id="6_eikeb"]
+[ext_resource type="Script" path="res://StartButton.gd" id="7_03lha"]
+[ext_resource type="Script" path="res://SettingsButton.gd" id="8_eq8ui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0je0y"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.839216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ika5"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="root_menu_node" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="audio_manager" parent="." instance=ExtResource("1_scxvw")]
+
+[node name="name_page" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_7ksfk")
+
+[node name="title_background" type="TextureRect" parent="name_page"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6ws0e")
+
+[node name="god_name_label" type="Label" parent="name_page"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -948.0
+offset_top = 304.0
+offset_right = 948.0
+offset_bottom = 441.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 90
+text = "Enter your god's name"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="name_page"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -72.5
+offset_right = 750.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 55
+alignment = 1
+max_length = 40
+select_all_on_focus = true
+script = ExtResource("4_6dy8q")
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title_background" type="TextureRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6ws0e")
+
+[node name="buttons_container" type="MarginContainer" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="to_delete" type="VBoxContainer" parent="TitleScreen/buttons_container"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Separator" type="Control" parent="TitleScreen/buttons_container/to_delete"]
+layout_mode = 2
+
+[node name="Logotodelete" type="Label" parent="TitleScreen/buttons_container/to_delete"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 140
+text = "TITLE GOES HERE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/buttons_container"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/buttons_container/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Separator2" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
+text = "Start Game
+"
+script = ExtResource("7_03lha")
+
+[node name="Separator3" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
+text = "Settings
+"
+script = ExtResource("8_eq8ui")
+
+[node name="settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_b2r4y")
+
+[node name="title_background" type="TextureRect" parent="settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6ws0e")
+
+[node name="audio_label" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.5
+offset_top = 287.0
+offset_right = 126.5
+offset_bottom = 411.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 80
+text = "Audio"
+
+[node name="master_label" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -257.0
+offset_right = 146.0
+offset_bottom = -202.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 40
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="music_label" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -89.0
+offset_right = 134.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 40
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="sound_label" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = 89.0
+offset_right = 138.5
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 40
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="master_slider" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 540.0
+offset_right = 1153.0
+offset_bottom = 556.0
+scale = Vector2(2.88, 3.1104)
+
+[node name="music_slider" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 715.0
+offset_right = 1153.0
+offset_bottom = 731.0
+scale = Vector2(2.88, 3.1104)
+
+[node name="sound_slider" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 888.0
+offset_right = 1153.0
+offset_bottom = 904.0
+scale = Vector2(2.88, 3.1104)
+
+[node name="back_button" type="Button" parent="settings"]
+layout_mode = 0
+offset_left = 1747.0
+offset_top = 947.0
+offset_right = 1933.0
+offset_bottom = 1050.0
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ika5")
+text = "Back"
+script = ExtResource("6_eikeb")
+
+[connection signal="text_submitted" from="name_page/LineEdit" to="name_page/LineEdit" method="_on_text_submitted"]
+[connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
+[connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]

@@ -2,7 +2,8 @@ extends Window
 signal event_window_done
 
 @onready var UI = $"../UI"
-var loaded_event: Event_container
+var loaded_event: Event_container = Event_container.new()
+var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,35 +20,41 @@ func _process(delta):
 
 func _on_event_b1():
 	print("b1")
+	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_1)
+	loaded_event.is_active = true
 	self.hide()
+	active = false
 	emit_signal("event_window_done")
 	pass # Replace with function body.
 
 
 func _on_event_b2():
 	print("b2")
+	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_2)
+	loaded_event.is_active = true
 	self.hide()
+	active = false
 	emit_signal("event_window_done")
 	pass # Replace with function body.
 
 
 func _on_event_b3():
 	print("b3")
+	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_3)
+	loaded_event.is_active = true
 	self.hide()
+	active = false
 	emit_signal("event_window_done")
 	pass # Replace with function body.
 
-
+func load_event(e:Event_container):
+	loaded_event = e
 
 func _on_event_pop_up_bubble_signal():
-	loaded_event = Event_container.new()
 	$event_text.text = loaded_event.event_text
-	loaded_event.resources.set_re(Resources.r.CULTISTS, -2)
-	$event_button1.load_cost(loaded_event.resources)
-	loaded_event.resources.set_re(Resources.r.CULTISTS, 0)
-	loaded_event.resources.set_re(Resources.r.MAGIC, -500)
-	$event_button2.load_cost(loaded_event.resources)
-	loaded_event.resources.set_re(Resources.r.MAGIC, -1500)
-	$event_button3.load_cost(loaded_event.resources)
+	$event_button1.load_cost(loaded_event.cost_1)
+	$event_button2.load_cost(loaded_event.cost_2)
+	$event_button3.load_cost(loaded_event.cost_3)
+	active = true
 	self.show()
 	pass # Replace with function body.
