@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqh3trwm4smod"]
+[gd_scene load_steps=7 format=3 uid="uid://dqh3trwm4smod"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_vbxgf"]
+[ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_a410q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
 font_size = 48
@@ -27,6 +28,7 @@ clip_contents = true
 layout_mode = 0
 offset_right = 72.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Cultists:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
@@ -36,6 +38,7 @@ layout_mode = 0
 offset_left = 480.0
 offset_right = 629.0
 offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Magic:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
@@ -45,6 +48,7 @@ layout_mode = 0
 offset_left = 960.0
 offset_right = 1140.0
 offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Loyalty:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
@@ -57,6 +61,7 @@ offset_bottom = 56.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_a410q")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/background = SubResource("StyleBoxFlat_rtqf8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_g2tvy")
@@ -67,6 +72,7 @@ layout_mode = 0
 offset_left = 1400.0
 offset_right = 1631.0
 offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Prisoners:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
@@ -76,6 +82,7 @@ layout_mode = 0
 offset_left = 1880.0
 offset_right = 2054.0
 offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Money:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
@@ -85,6 +92,7 @@ offset_top = 67.0
 offset_right = 152.0
 offset_bottom = 136.0
 scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Assign cultist
 to ritual"
 label_settings = SubResource("LabelSettings_srj8g")
@@ -103,6 +111,7 @@ offset_top = 400.0
 offset_right = 168.0
 offset_bottom = 469.0
 scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Assign cultist
 to recruitment"
 label_settings = SubResource("LabelSettings_srj8g")
@@ -121,6 +130,7 @@ offset_top = 792.0
 offset_right = 168.0
 offset_bottom = 861.0
 scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_a410q")
 text = "Assign cultist
 to A&W"
 label_settings = SubResource("LabelSettings_srj8g")
