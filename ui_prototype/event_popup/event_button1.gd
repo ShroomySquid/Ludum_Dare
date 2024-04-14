@@ -13,7 +13,7 @@ func load_cost(r: Resource_container):
 
 func _on_pressed():
 	print("hello")
-	par.UI.resources = Resource_container.combine(par.UI.resources, cost)
+	#par.UI.resources = Resource_container.combine(par.UI.resources, cost)
 	pass
 
 
