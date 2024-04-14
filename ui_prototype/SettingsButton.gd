@@ -1,4 +1,10 @@
 extends Button
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://settings.tscn")
+	var settings_scene = $"../../../../../settings"
+	var title_screen_scene = $"../../../.."
+	var name_page_scene = $"../../../../../name_page"
+	
+	settings_scene.show()
+	title_screen_scene.hide()
+	name_page_scene.hide()

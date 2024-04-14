@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvqe7debalfaf"]
+[gd_scene load_steps=4 format=3 uid="uid://cvqe7debalfaf"]
 
 [ext_resource type="Texture2D" uid="uid://cn4uwpr3kgr6w" path="res://brick.jpg" id="1_c5xgg"]
+[ext_resource type="Script" path="res://back_button.gd" id="2_1kqqy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ika5"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -20,52 +24,105 @@ grow_vertical = 2
 texture = ExtResource("1_c5xgg")
 
 [node name="audio_label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 841.0
-offset_top = 507.0
-offset_right = 1094.0
-offset_bottom = 631.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.5
+offset_top = 287.0
+offset_right = 126.5
+offset_bottom = 411.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 80
 text = "Audio"
 
 [node name="master_label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 106.0
-offset_bottom = 161.0
+offset_left = -145.0
+offset_top = -66.0
+offset_right = 146.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "Master Volume"
 horizontal_alignment = 1
 
 [node name="music_label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 220.0
-offset_bottom = 275.0
+offset_left = -134.0
+offset_top = 102.0
+offset_right = 134.0
+offset_bottom = 157.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "Music Volume"
 horizontal_alignment = 1
 
 [node name="sound_label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 338.0
-offset_bottom = 393.0
+offset_left = -138.5
+offset_top = 280.0
+offset_right = 138.5
+offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "Sound Volume"
 horizontal_alignment = 1
+
+[node name="master_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 540.0
+offset_right = 849.0
+offset_bottom = 556.0
+scale = Vector2(2.88, 3.1104)
+
+[node name="music_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 715.0
+offset_right = 849.0
+offset_bottom = 731.0
+scale = Vector2(2.88, 3.1104)
+
+[node name="sound_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 888.0
+offset_right = 849.0
+offset_bottom = 904.0
+scale = Vector2(2.88, 3.1104)
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1619.0
+offset_top = 883.0
+offset_right = 1805.0
+offset_bottom = 986.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ika5")
+text = "Back"
+script = ExtResource("2_1kqqy")
+
+[connection signal="pressed" from="back_button" to="back_button" method="_on_pressed"]
