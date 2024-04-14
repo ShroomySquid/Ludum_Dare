@@ -64,11 +64,10 @@ func _endTuto():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (is_paused == true):
-		return
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
 		pauseMenu()
-	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
+	if (is_paused == true):
+		return
 	global_timer += delta
 	if (global_timer >= 900):
 		if (resources.get_re(Resources.r.MAGIC) >= 1000000):
@@ -104,4 +103,5 @@ func _process(delta):
 		peak_magic = resources.get_re(Resources.r.MAGIC)
 	if (resources.get_re(Resources.r.MAGIC) < peak_magic / 2):
 		resources.sub_re(Resources.r.LOYALTY, delta)
+	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4)
