@@ -1,4 +1,5 @@
 extends Control
+@onready var menu = $"../Menu"
 var resources: Resource_container = Resource_container.new()
 var available_cultists = 0
 var peak_magic = 1000
@@ -7,6 +8,7 @@ var cultists_in_recruitment = 0
 var cultists_in_job = 0
 var global_timer = 0
 var new_cultist_counter = 0
+var is_paused = false
 
 func _cultists_in_ritual(value: float):
 	cultists_in_ritual = $Cultist_Send.value
@@ -26,8 +28,19 @@ func _cultists_in_job(value: float):
 		cultists_in_job = resources.get_re(Resources.r.CULTISTS) - cultists_in_recruitment - cultists_in_ritual
 	$Job_Send.value = cultists_in_job
 
+func pauseMenu():
+	if is_paused:
+		is_paused = false
+		Engine.time_scale = 1
+		menu.hide()
+	else:
+		is_paused = true
+		Engine.time_scale = 0
+		menu.show()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	menu.hide()
 	resources.set_re(Resources.r.CULTISTS, 20)
 	resources.set_re(Resources.r.MAGIC, 1000)
 	resources.set_re(Resources.r.LOYALTY, 100)
@@ -42,6 +55,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	global_timer += delta
 	if (global_timer >= 900):
