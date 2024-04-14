@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsfkrv02lhns7"]
+
+[ext_resource type="Texture2D" uid="uid://cn4uwpr3kgr6w" path="res://brick.jpg" id="1_sih2i"]
+[ext_resource type="Script" path="res://LineEdit.gd" id="2_njvbe"]
+
+[node name="name_page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sih2i")
+
+[node name="god_name_label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 210.0
+offset_right = 1908.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 100
+text = "Enter your god's name"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+offset_left = 178.0
+offset_top = 404.0
+offset_right = 1678.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 55
+alignment = 1
+max_length = 40
+select_all_on_focus = true
+script = ExtResource("2_njvbe")
+
+[connection signal="text_submitted" from="LineEdit" to="LineEdit" method="_on_text_submitted"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvqe7debalfaf"]
+
+[ext_resource type="Texture2D" uid="uid://cn4uwpr3kgr6w" path="res://brick.jpg" id="1_c5xgg"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_c5xgg")
+
+[node name="audio_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 507.0
+offset_right = 1094.0
+offset_bottom = 631.0
+theme_override_font_sizes/font_size = 80
+text = "Audio"
+
+[node name="master_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 106.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="music_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 220.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="sound_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 338.0
+offset_bottom = 393.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Sound Volume"
+horizontal_alignment = 1
