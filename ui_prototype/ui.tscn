@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqh3trwm4smod"]
+[gd_scene load_steps=8 format=3 uid="uid://dqh3trwm4smod"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_vbxgf"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_a410q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
 font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_335fy"]
+font_size = 48
+font_color = Color(0.423529, 0, 0.423529, 1)
+outline_size = 5
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtqf8"]
 bg_color = Color(1, 1, 1, 1)
@@ -45,7 +52,7 @@ offset_right = 629.0
 offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("2_a410q")
 text = "Magic:"
-label_settings = SubResource("LabelSettings_l3ewh")
+label_settings = SubResource("LabelSettings_335fy")
 
 [node name="loyalty_label" type="Label" parent="."]
 clip_contents = true
@@ -59,7 +66,7 @@ label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="loyalty_bar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 1140.0
+offset_left = 1145.0
 offset_top = 8.0
 offset_right = 1390.0
 offset_bottom = 56.0
