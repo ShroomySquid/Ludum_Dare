@@ -18,4 +18,5 @@ func _on_s_key_pressed():
 
 func _on_button_pressed():
 	get_parent().get_node("UI").is_paused = false
+	get_parent().get_node("UI").in_intro = false
 	self.hide()
