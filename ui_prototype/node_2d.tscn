@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://n1e4vd3wmgj4"]
+[gd_scene load_steps=10 format=3 uid="uid://n1e4vd3wmgj4"]
 
 [ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://png/background.png" id="1_paqku"]
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="2_iytib"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dtw641sruxwlq" path="res://event_popup/listener_bubble.tscn" id="5_ixf3o"]
 [ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="7_cd71p"]
 [ext_resource type="Script" path="res://Event_management/event_manager.gd" id="7_s0rid"]
+[ext_resource type="PackedScene" uid="uid://ba8rt35jlr4s3" path="res://Menu/EndScreen.tscn" id="9_57u53"]
 
 [node name="Untitled Cult Game" type="Node2D"]
 
@@ -74,6 +75,9 @@ offset_right = 1428.0
 offset_bottom = 728.0
 scale = Vector2(1, 1)
 
+[node name="EndScreen" parent="MenuLayer" instance=ExtResource("9_57u53")]
+
+[connection signal="end_game" from="UI" to="MenuLayer/EndScreen" method="_on_ui_end_game"]
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up2" to="UI" method="_on_event_pop_up_bubble_signal"]

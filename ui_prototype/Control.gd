@@ -1,6 +1,8 @@
 extends Control
 class_name GAME
 @onready var menu = $"../MenuLayer/Menu"
+@onready var end_screen = $"../MenuLayer/EndScreen"
+signal end_game(score)
 var resources: Resource_container = Resource_container.new()
 @export var available_cultists = 0
 var peak_magic = 1000
@@ -46,10 +48,13 @@ func pauseMenu():
 		Engine.time_scale = 0
 		menu.show()
 
+func retry():
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	menu.hide()
+	end_screen.hide()
 	resources.set_re(Resources.r.CULTISTS, 20)
 	resources.set_re(Resources.r.MAGIC, 1000)
 	resources.set_re(Resources.r.LOYALTY, 100)
@@ -97,23 +102,27 @@ func _process(delta):
 			print("There are no cultists left. You suck")
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	global_timer += delta
-	if (global_timer >= 900):
-		if (resources.get_re(Resources.r.MAGIC) >= 1000000):
-			print("cori tier")
-		elif (resources.get_re(Resources.r.MAGIC) >= 100000):
-			print("damn good")
-		elif (resources.get_re(Resources.r.MAGIC) >= 10000):
-			print("fine")
-		elif (resources.get_re(Resources.r.MAGIC) >= 1000):
-			print("trash")
-		elif (resources.get_re(Resources.r.MAGIC) >= 1000):
-			print("you really bloody suck")
-		elif (resources.get_re(Resources.r.MAGIC) >= 100):
-			print("you didn't even try")
-		elif (resources.get_re(Resources.r.MAGIC) >= 10):
-			print("you had to try to be this bad")
-		elif (resources.get_re(Resources.r.MAGIC) >= 1):
-			print("how")
+	if (global_timer >= 2):
+		Engine.time_scale = 0
+		end_game.emit(resources.get_re(Resources.r.MAGIC))
+		#end_screen.set_score("Final score: " + str(Resources.r.MAGIC))
+		#if (resources.get_re(Resources.r.MAGIC) >= 1000000):
+			#print("cori tier")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 100000):
+			#print("damn good")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 10000):
+			#print("fine")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 1000):
+			#print("trash")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 1000):
+			#print("you really bloody suck")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 100):
+			#print("you didn't even try")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 10):
+			#print("you had to try to be this bad")
+		#elif (resources.get_re(Resources.r.MAGIC) >= 1):
+			#print("how")
+		end_screen.show()
 	#resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta / 20)
 	magic_gen(delta)
 	new_cultist_counter += cultists_in_recruitment * delta
@@ -133,3 +142,7 @@ func _process(delta):
 		resources.sub_re(Resources.r.LOYALTY, delta)
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4)
+
+
+func _on_end_game(score):
+	pass # Replace with function body.
