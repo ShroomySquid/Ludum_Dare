@@ -24,7 +24,7 @@ You are <player_name>"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_theme_icon_override("close", Texture2D.new())
-	self.show()
+	self.hide()
 	load_file(file_paths)
 	#var content = ""
 	#var i = 0
@@ -110,3 +110,7 @@ func _on_skip_button_pressed():
 	Engine.time_scale = 1
 	self.hide()
 	pass
+
+
+func _on_line_edit_game_start():
+	self.show()
