@@ -11,10 +11,26 @@ unresizable = true
 theme_override_fonts/title_font = ExtResource("1_5axjo")
 script = ExtResource("1_a41at")
 
-[node name="Button" type="Button" parent="."]
+[node name="continue_button" type="Button" parent="."]
 offset_left = 375.0
-offset_top = 425.0
+offset_top = 450.0
 offset_right = 425.0
-offset_bottom = 457.0
+offset_bottom = 482.0
+text = "OK"
+icon_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="skip_button" type="Button" parent="."]
+offset_left = 695.0
+offset_top = 467.0
+offset_right = 798.0
+offset_bottom = 498.0
+text = "Skip tutorial"
+
+[node name="intro_label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_5axjo")
+theme_override_font_sizes/font_size = 21
+
+[connection signal="pressed" from="continue_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="skip_button" to="." method="_on_skip_button_pressed"]

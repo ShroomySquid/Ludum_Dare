@@ -18,45 +18,40 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_paqku")
 offset = Vector2(960, 540)
 
+[node name="View" parent="." instance=ExtResource("3_gmkf1")]
+position = Vector2(0, 65)
+
 [node name="UI" parent="." instance=ExtResource("2_iytib")]
 
-[node name="View" parent="." instance=ExtResource("3_gmkf1")]
-
-[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
-initial_position = 2
-
 [node name="event_pop_up" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1032.0
-offset_top = 202.0
-offset_right = 1032.0
-offset_bottom = 202.0
+offset_left = 738.0
+offset_top = 273.0
+offset_right = 738.0
+offset_bottom = 273.0
 
 [node name="event_pop_up2" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1299.0
-offset_top = 671.0
-offset_right = 1299.0
-offset_bottom = 671.0
+offset_left = 930.0
+offset_top = 787.0
+offset_right = 930.0
+offset_bottom = 787.0
 
 [node name="event_pop_up3" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 2021.0
-offset_top = 850.0
-offset_right = 2021.0
-offset_bottom = 850.0
+offset_left = 1650.0
+offset_top = 889.0
+offset_right = 1650.0
+offset_bottom = 889.0
 
 [node name="event_pop_up4" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 2134.0
-offset_top = 133.0
-offset_right = 2134.0
-offset_bottom = 133.0
+offset_left = 1707.0
+offset_top = 225.0
+offset_right = 1707.0
+offset_bottom = 225.0
 
 [node name="event_pop_up5" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1646.0
-offset_top = 299.0
-offset_right = 1646.0
-offset_bottom = 299.0
-
-[node name="Menu" parent="." instance=ExtResource("4_dhysq")]
-scale = Vector2(1, 1)
+offset_left = 1248.0
+offset_top = 402.0
+offset_right = 1248.0
+offset_bottom = 402.0
 
 [node name="Event_manager" type="Control" parent="."]
 layout_mode = 3
@@ -65,9 +60,28 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_s0rid")
 
-[node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
+[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
+initial_position = 1
+visible = false
+always_on_top = false
 
-[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]
+[node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
+initial_position = 1
+visible = false
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="MenuLayer" instance=ExtResource("4_dhysq")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1, 1)
+
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up2" to="UI" method="_on_event_pop_up_bubble_signal"]
@@ -78,3 +92,4 @@ script = ExtResource("7_s0rid")
 [connection signal="bubble_signal" from="event_pop_up4" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up5" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up5" to="event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]

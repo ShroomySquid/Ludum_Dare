@@ -1,6 +1,6 @@
 extends Control
 class_name GAME
-@onready var menu = $"../Menu"
+@onready var menu = $"../MenuLayer/Menu"
 var resources: Resource_container = Resource_container.new()
 @export var available_cultists = 10
 var peak_magic = 1000
@@ -46,6 +46,7 @@ func pauseMenu():
 		is_paused = true
 		Engine.time_scale = 0
 		menu.show()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

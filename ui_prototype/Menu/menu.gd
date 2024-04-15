@@ -1,9 +1,9 @@
 extends Control
 
-@onready var main = $"../UI"
+@onready var main = $"../../UI"
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func _process(_delta):
 	pass
