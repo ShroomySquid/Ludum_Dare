@@ -107,7 +107,6 @@ func magic_gen(delta):
 		resources.sub_re(Resources.r.MAGIC, d * delta / 20)
 
 func update_labels():
-	var n = 0
 	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
 	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
 	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
@@ -128,8 +127,9 @@ func update_labels():
 	$Event_Progress_3.hide()
 	$Event_Progress_4.hide()
 	$Event_Progress_5.hide()
+	var n = 0
 	for i in range(5):
-		if (get_parent().get_node("Event_manager").ongoing_event[i].is_active == true && get_parent().get_node("Event_manager").ongoing_event[i].is_placeholder == false):
+		if (get_parent().get_node("Event_manager").ongoing_event[i].is_active == true && get_parent().get_node("Event_manager").ongoing_event[i].is_placeholder == false && get_parent().get_node("Event_manager").ongoing_event[i].t_chosen != 0):
 			if (n == 0):
 				$Event_Progress_1.show()
 				$Event_Progress_1.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
