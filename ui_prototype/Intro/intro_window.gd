@@ -15,6 +15,10 @@ var texts = [
 	""
 ]
 
+const intro_first = "WELCOME
+
+You are <player_name>"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -34,24 +38,19 @@ func _ready():
 		#print("File not found:", file_paths[i])
 	var label_node = get_node("intro_label")
 	if label_node != null:
-		label_node.text = texts[0]
+		label_node.text = intro_first + texts[0]
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-<<<<<<< HEAD
-#func _on_s_key_pressed():
-	#self.hide()
-	#pass
-=======
 func _on_s_key_pressed():
 	get_parent().get_node("UI").is_paused = false
 	get_parent().get_node("UI").in_intro = false
 	Engine.time_scale = 1
 	self.hide()
 	pass
->>>>>>> main
+
 
 #func load_file(file_paths):
 	#var file

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bttiw6qjxoywv"]
 
-[ext_resource type="PackedScene" uid="uid://b64k0dhbslb86" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
 [ext_resource type="Script" path="res://LineEdit.gd" id="4_6dy8q"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="4_aeki8"]

@@ -1,1 +1,13 @@
-asdasdasdasd
+YOUR SERVANTS
+
+Your cultists can be assigned simple tasks that will help you manage
+your ressources, like working to earn money, assisting with the ritual
+or sent out to recruit more to the cause. You can also sacrifice them
+for extra magic, just like prisoners. Be careful, as this may decrease
+their loyalty to you and will reduce your total number of available cultits.
+
+ARCHONS
+
+You have 5 archons to assist you, all with their own unique 
+expertise, learn how to use them to your advantage. Each
+of them will have events that consist of tasks for them to complete.
