@@ -60,6 +60,10 @@ func _on_event_b3():
 
 func load_event(e:Event_container):
 	loaded_event = e
+	#if loaded_event.exclusive == 0
+		#
+	pass
+	
 
 func _on_event_pop_up_bubble_signal():
 	$event_text.text = loaded_event.event_text
