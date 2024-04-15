@@ -27,18 +27,28 @@ func _ready():
 
 func generate_pool():
 	for i in range(10):
-		event_pool.append(Event_container.new(2, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])]))
+		event_pool.append(Event_container.new(i, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([0, 0, 0, 0, 0, 0])]))
 		event_pool[i].set_event_text("This is event_" + str(i))
+		event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
+		event_pool[i].r_1 = Resource_container.new([10, 1000, 0, 0, 0, 0])
+		event_pool[i].r_2 = Resource_container.new([10, 1000, 0, 0, 0, 0])
 		event_pool[i].t_1 = 5
 		event_pool[i].t_2 = 5
-		event_pool[i].t_3 = 5
-		event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
+		event_pool[i].t_3 = 0
+		print(JSON.stringify(event_pool[i].my_dict()))
+	var s = JSON.stringify(Event_container.new(0, [Resource_container.new([0, 0, 0, 0, 0, 0]), Resource_container.new([0, 0, 0, 0, 0, 0]), Resource_container.new([0, 0, 0, 0, 0, 0])]).my_dict())
+	var json = JSON.new()
+	json.parse(s)
+	event_pool[0] = Event_container.from_dict(json.data)
+	print(JSON.stringify(event_pool[0].my_dict()))
 	print("Pool refreshed")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	t += delta
 	for i in range(5):
+		if ongoing_event[i].is_placeholder:
+			break
 		if ongoing_event[i].is_active:
 			ongoing_event[i].timer -= delta
 		if ongoing_event[i].timer <= 0:

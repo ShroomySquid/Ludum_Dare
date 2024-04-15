@@ -1,6 +1,11 @@
 extends Control
 class_name GAME
 @onready var menu = $"../MenuLayer/Menu"
+@onready var end_screen = $"../MenuLayer/EndScreen"
+@onready var game_theme = $"../GameTheme"
+@onready var menu_theme = $"../MenuTheme"
+@onready var end_theme = $"../EndTheme"
+signal end_game(score)
 var resources: Resource_container = Resource_container.new()
 @export var available_cultists = 10
 var peak_magic = 1000
@@ -49,9 +54,33 @@ func pauseMenu():
 		Engine.time_scale = 0
 		menu.show()
 
-# Called when the node enters the scene tree for the first time.
+func retry():
+	print("retry works")
+	global_timer = 0
+	resources.set_re(Resources.r.CULTISTS, 20)
+	resources.set_re(Resources.r.MAGIC, 1000)
+	resources.set_re(Resources.r.LOYALTY, 100)
+	resources.set_re(Resources.r.PRISONERS, 0)
+	resources.set_re(Resources.r.GOLD, 10000)
+	#Engine.time_scale = 1
+	peak_magic = 1000
+	cultists_in_ritual = 10
+	cultists_in_recruitment = 0
+	cultists_in_job = 0
+	new_cultist_counter = 0
+	available_cultists = 10
+	is_paused = false
+	in_intro = false
+	$Cultist_Send.value = cultists_in_ritual
+	$Recruitment_Send.value = cultists_in_recruitment
+	$Job_Send.value = cultists_in_job
+	end_screen.hide()
+	Engine.time_scale = 1
+	pass
+
 func _ready():
 	menu.hide()
+	end_screen.hide()
 	resources.set_re(Resources.r.CULTISTS, 20)
 	resources.set_re(Resources.r.MAGIC, 1000)
 	resources.set_re(Resources.r.LOYALTY, 100)
@@ -153,24 +182,11 @@ func update_cultists(delta):
 func update_timer(delta):
 	global_timer += delta
 	if (global_timer >= 900):
-		if (resources.get_re(Resources.r.MAGIC) >= 1000000):
-			print("cori tier")
-		elif (resources.get_re(Resources.r.MAGIC) >= 100000):
-			print("damn good")
-		elif (resources.get_re(Resources.r.MAGIC) >= 10000):
-			print("fine")
-		elif (resources.get_re(Resources.r.MAGIC) >= 1000):
-			print("trash")
-		elif (resources.get_re(Resources.r.MAGIC) >= 1000):
-			print("you really bloody suck")
-		elif (resources.get_re(Resources.r.MAGIC) >= 100):
-			print("you didn't even try")
-		elif (resources.get_re(Resources.r.MAGIC) >= 10):
-			print("you had to try to be this bad")
-		elif (resources.get_re(Resources.r.MAGIC) >= 1):
-			print("how")
+		is_paused = true
+		Engine.time_scale = 0
+		end_game.emit(resources.get_re(Resources.r.MAGIC))
+		end_screen.show()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_labels()
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
