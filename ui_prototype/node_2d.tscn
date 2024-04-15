@@ -16,6 +16,7 @@
 
 [node name="View" parent="." instance=ExtResource("3_gmkf1")]
 position = Vector2(0, 65)
+scale = Vector2(1.932, 1.999)
 
 [node name="UI" parent="." instance=ExtResource("2_iytib")]
 
@@ -79,6 +80,7 @@ grow_vertical = 1
 scale = Vector2(1, 1)
 
 [node name="EndScreen" parent="MenuLayer" instance=ExtResource("9_57u53")]
+visible = false
 offset_left = 138.0
 offset_top = -18.0
 offset_right = 2495.0
