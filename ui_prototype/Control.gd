@@ -188,10 +188,12 @@ func update_timer(delta):
 		end_screen.show()
 
 func _process(delta):
+	var settings_page = $"../../settings"
 	update_labels()
-	if (!game_theme.playing):
-		game_theme.play()
+	#if (!game_theme.playing):
+	#	game_theme.play()
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
+		settings_page.hide()
 		pauseMenu()
 	if (is_paused == true):
 		return
