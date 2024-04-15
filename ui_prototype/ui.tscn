@@ -240,6 +240,70 @@ offset_right = 496.0
 offset_bottom = 64.0
 show_percentage = false
 
+[node name="Event_Progress_2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 608.0
+offset_right = 514.0
+offset_bottom = 676.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 691.0
+offset_right = 514.0
+offset_bottom = 759.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_3"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 772.0
+offset_right = 514.0
+offset_bottom = 840.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_4"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_5" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 855.0
+offset_right = 514.0
+offset_bottom = 923.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_5"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
 [node name="Pause_Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 14.0
