@@ -154,13 +154,17 @@ func update_labels():
 
 func update_gold(delta):
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
-	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4 * living_cost)
+	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) + resources.get_re(Resources.r.PRISONERS) - cultists_in_job) * delta * 4 * living_cost)
 	if (resources.get_re(Resources.r.GOLD) <= 0):
 		starve_timer -= delta
 	else:
 		starve_timer = 1
 	if (starve_timer <= 0):
-		resources.sub_re(Resources.r.CULTISTS, 1)
+		if (resources.get_re(Resources.r.PRISONERS) > 0):
+			resources.sub_re(Resources.r.PRISONERS, 1)
+		else:
+			resources.sub_re(Resources.r.CULTISTS, 1)
+			resources.sub_re(Resources.r.LOYALTY, 5)
 		starve_timer = 1
 
 func update_cultists(delta):
