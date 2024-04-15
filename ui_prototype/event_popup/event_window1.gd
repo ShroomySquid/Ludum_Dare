@@ -23,6 +23,8 @@ func _process(_delta):
 func _on_event_b1():
 	print("b1")
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_1)
+	loaded_event.reward = loaded_event.r_1
+	loaded_event.timer = loaded_event.t_1
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -33,6 +35,8 @@ func _on_event_b1():
 func _on_event_b2():
 	print("b2")
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_2)
+	loaded_event.reward = loaded_event.r_2
+	loaded_event.timer = loaded_event.t_2
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -43,6 +47,8 @@ func _on_event_b2():
 func _on_event_b3():
 	print("b3")
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_3)
+	loaded_event.reward = loaded_event.r_3
+	loaded_event.timer = loaded_event.t_3
 	loaded_event.is_active = true
 	self.hide()
 	active = false

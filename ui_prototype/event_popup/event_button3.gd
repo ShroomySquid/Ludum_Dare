@@ -9,7 +9,7 @@ func _ready():
 	pass # Replace with function body.
 
 func load_cost(r: Resource_container):
-	cost = Resource_container.combine(r, Resource_container.new())
+	cost = Resource_container.new(r.basket)
 
 func _on_pressed():
 	print("hello")

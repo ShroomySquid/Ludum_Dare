@@ -23,6 +23,8 @@ func _init(b = [0, 0, 0, 0, 0, 0]):
 static func combine(r1:Resource_container, r2:Resource_container):
 	var r3: Resource_container = Resource_container.new()
 	for i in range(6):
+		if r1.basket[i] + r2.basket[i] >= 0 || i == Resources.r.CULTISTS : r3.basket[i] = r1.basket[i] + r2.basket[i]
+		else : r3.basket[i] = 0
 		r3.basket[i] = r1.basket[i] + r2.basket[i];
 	return r3
 
