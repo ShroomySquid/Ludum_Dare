@@ -24,4 +24,3 @@ func _process(_delta):
 	else:
 		disabled = false
 	pass
-
