@@ -29,7 +29,7 @@ script = SubResource("GDScript_q62fq")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.76, 1)
+scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("2_tl7gs")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

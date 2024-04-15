@@ -26,34 +26,34 @@ offset = Vector2(960, 540)
 initial_position = 2
 
 [node name="event_pop_up" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 161.0
-offset_top = 61.0
-offset_right = 161.0
-offset_bottom = 61.0
+offset_left = 1032.0
+offset_top = 202.0
+offset_right = 1032.0
+offset_bottom = 202.0
 
 [node name="event_pop_up2" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 584.0
-offset_top = 52.0
-offset_right = 584.0
-offset_bottom = 52.0
+offset_left = 1299.0
+offset_top = 671.0
+offset_right = 1299.0
+offset_bottom = 671.0
 
 [node name="event_pop_up3" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 931.0
-offset_top = 59.0
-offset_right = 931.0
-offset_bottom = 59.0
+offset_left = 2021.0
+offset_top = 850.0
+offset_right = 2021.0
+offset_bottom = 850.0
 
 [node name="event_pop_up4" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1342.0
-offset_top = 97.0
-offset_right = 1342.0
-offset_bottom = 97.0
+offset_left = 2134.0
+offset_top = 133.0
+offset_right = 2134.0
+offset_bottom = 133.0
 
 [node name="event_pop_up5" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1723.0
-offset_top = 105.0
-offset_right = 1723.0
-offset_bottom = 105.0
+offset_left = 1646.0
+offset_top = 299.0
+offset_right = 1646.0
+offset_bottom = 299.0
 
 [node name="Menu" parent="." instance=ExtResource("4_dhysq")]
 scale = Vector2(1, 1)
