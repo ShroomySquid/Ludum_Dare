@@ -68,6 +68,7 @@ func _process(delta):
 			if event_pool.is_empty():
 				generate_pool()
 			var e = randi_range(0, event_pool.size() - 1)
+			event_pool[e].exclusive = guy
 			popups[guy].load_event(event_pool[e])
 			ongoing_event[guy] = event_pool[e]
 			event_pool.pop_at(e)

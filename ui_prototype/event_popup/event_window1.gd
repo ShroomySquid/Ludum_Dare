@@ -7,7 +7,7 @@ var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.add_theme_icon_override("close", Texture2D.new())
+	#self.add_theme_icon_override("close", Texture2D.new())
 	self.hide()
 	#gui_embed_subwindows = true
 	pass # Replace with function body.
@@ -68,4 +68,12 @@ func _on_event_pop_up_bubble_signal():
 	$event_button3.load_cost(loaded_event.cost_3)
 	active = true
 	self.show()
+	pass # Replace with function body.
+
+
+func _on_close_requested():
+	$"../Event_manager".popups[loaded_event.exclusive].load_event(loaded_event)
+	$"../Event_manager".popups[loaded_event.exclusive].show()
+	active = false
+	self.hide()
 	pass # Replace with function body.

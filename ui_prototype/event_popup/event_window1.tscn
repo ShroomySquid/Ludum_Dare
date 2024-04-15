@@ -69,6 +69,7 @@ script = ExtResource("5_dx7kw")
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="b1_pressed" from="event_button1" to="." method="_on_event_button_1_b_1_pressed"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_b1"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_button_1_pressed"]
