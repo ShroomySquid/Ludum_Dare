@@ -18,6 +18,7 @@ theme_override_fonts/title_font = ExtResource("2_xx7rv")
 script = ExtResource("1_mxji7")
 
 [node name="event_text" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 500)
 offset_right = 40.0
 offset_bottom = 23.0
 theme = SubResource("Theme_lswx8")
@@ -28,6 +29,7 @@ theme_override_fonts/font = ExtResource("2_xx7rv")
 text = "You have decided to give your soul to me, so give up already.
 This is a big pile of text that makes no sense, so please stop reading
 it."
+autowrap_mode = 2
 justification_flags = 0
 
 [node name="event_button1" type="Button" parent="."]

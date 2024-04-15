@@ -39,7 +39,7 @@ func _ready():
 			#print("Error opening file:", file_paths[i])
 	#else:
 		#print("File not found:", file_paths[i])
-	var label_node = get_node("intro_label")
+	var label_node = get_node("text")
 	if label_node != null:
 		label_node.text = intro_first + texts[0]
 	pass
@@ -78,7 +78,7 @@ func load_file(file_paths: Array) -> void:
 		
 		# Read file content
 		var file_content = file.get_as_text()
-		texts[j] += file_content
+		texts[j] = file_content
 		
 		# Close the file
 		file.close()
