@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqg8o57sy02um"]
+[gd_scene load_steps=28 format=3 uid="uid://cqg8o57sy02um"]
 
-[ext_resource type="PackedScene" uid="uid://b64k0dhbslb86" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="Script" path="res://root_menu_node.gd" id="1_wq6na"]
+[ext_resource type="Script" path="res://Untitled Cult Game.gd" id="2_uhcsa"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
 [ext_resource type="Script" path="res://LineEdit.gd" id="4_6dy8q"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="4_aeki8"]
@@ -10,12 +12,25 @@
 [ext_resource type="Script" path="res://StartButton.gd" id="7_03lha"]
 [ext_resource type="Script" path="res://SettingsButton.gd" id="8_eq8ui"]
 [ext_resource type="Script" path="res://Exit_button.gd" id="8_o3tkp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0je0y"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 0.839216)
+[ext_resource type="Script" path="res://MenuLayer.gd" id="8_tupb5"]
+[ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="11_52ixn"]
+[ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="12_ia3re"]
+[ext_resource type="PackedScene" uid="uid://dtw641sruxwlq" path="res://event_popup/listener_bubble.tscn" id="13_qktal"]
+[ext_resource type="Script" path="res://GameTheme.gd" id="13_qq0s7"]
+[ext_resource type="Script" path="res://Event_management/event_manager.gd" id="14_57b7e"]
+[ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="15_wjeam"]
+[ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="16_skrke"]
+[ext_resource type="PackedScene" uid="uid://diejjpsf5s6pd" path="res://Menu/menu.tscn" id="17_d177q"]
+[ext_resource type="PackedScene" path="res://Menu/EndScreen.tscn" id="18_wpg3x"]
+[ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="19_njy2c"]
+[ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="20_s5itj"]
+[ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="21_whkf7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ika5"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0je0y"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.839216)
 
 [node name="root_menu_node" type="Control"]
 layout_mode = 3
@@ -24,8 +39,92 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wq6na")
 
 [node name="audio_manager" parent="." instance=ExtResource("1_scxvw")]
+
+[node name="Untitled Cult Game" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_uhcsa")
+
+[node name="View" parent="Untitled Cult Game" instance=ExtResource("11_52ixn")]
+position = Vector2(0, 65)
+scale = Vector2(1.932, 1.999)
+
+[node name="UI" parent="Untitled Cult Game" instance=ExtResource("12_ia3re")]
+
+[node name="event_pop_up" parent="Untitled Cult Game" instance=ExtResource("13_qktal")]
+offset_left = 738.0
+offset_top = 273.0
+offset_right = 738.0
+offset_bottom = 273.0
+
+[node name="event_pop_up2" parent="Untitled Cult Game" instance=ExtResource("13_qktal")]
+offset_left = 930.0
+offset_top = 787.0
+offset_right = 930.0
+offset_bottom = 787.0
+
+[node name="event_pop_up3" parent="Untitled Cult Game" instance=ExtResource("13_qktal")]
+offset_left = 1650.0
+offset_top = 889.0
+offset_right = 1650.0
+offset_bottom = 889.0
+
+[node name="event_pop_up4" parent="Untitled Cult Game" instance=ExtResource("13_qktal")]
+offset_left = 1707.0
+offset_top = 225.0
+offset_right = 1707.0
+offset_bottom = 225.0
+
+[node name="event_pop_up5" parent="Untitled Cult Game" instance=ExtResource("13_qktal")]
+offset_left = 1248.0
+offset_top = 402.0
+offset_right = 1248.0
+offset_bottom = 402.0
+
+[node name="Event_manager" type="Control" parent="Untitled Cult Game"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_57b7e")
+
+[node name="event_window1" parent="Untitled Cult Game" instance=ExtResource("15_wjeam")]
+initial_position = 1
+always_on_top = false
+
+[node name="intro_window" parent="Untitled Cult Game" instance=ExtResource("16_skrke")]
+initial_position = 1
+
+[node name="MenuLayer" type="CanvasLayer" parent="Untitled Cult Game"]
+script = ExtResource("8_tupb5")
+
+[node name="Menu" parent="Untitled Cult Game/MenuLayer" instance=ExtResource("17_d177q")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1, 1)
+
+[node name="EndScreen" parent="Untitled Cult Game/MenuLayer" instance=ExtResource("18_wpg3x")]
+offset_left = 138.0
+offset_top = -18.0
+offset_right = 2495.0
+offset_bottom = 1448.0
+
+[node name="GameTheme" type="AudioStreamPlayer" parent="Untitled Cult Game"]
+stream = ExtResource("19_njy2c")
+script = ExtResource("13_qq0s7")
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="Untitled Cult Game"]
+stream = ExtResource("20_s5itj")
+
+[node name="EndTheme" type="AudioStreamPlayer" parent="Untitled Cult Game"]
+stream = ExtResource("21_whkf7")
 
 [node name="name_page" type="Control" parent="."]
 layout_mode = 1
@@ -82,107 +181,19 @@ max_length = 40
 select_all_on_focus = true
 script = ExtResource("4_6dy8q")
 
-[node name="TitleScreen" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="title_background" type="TextureRect" parent="TitleScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_6ws0e")
-
-[node name="buttons_container" type="MarginContainer" parent="TitleScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="to_delete" type="VBoxContainer" parent="TitleScreen/buttons_container"]
-layout_mode = 2
-theme_override_constants/separation = 100
-
-[node name="Separator" type="Control" parent="TitleScreen/buttons_container/to_delete"]
-layout_mode = 2
-
-[node name="Logotodelete" type="Label" parent="TitleScreen/buttons_container/to_delete"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 140
-text = "TITLE GOES HERE"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/buttons_container"]
-layout_mode = 2
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/buttons_container/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Separator2" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-
-[node name="StartButton" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(600, 125)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="back_button2" type="Button" parent="name_page"]
+layout_mode = 0
+offset_left = 1747.0
+offset_top = 947.0
+offset_right = 1933.0
+offset_bottom = 1050.0
 theme_override_fonts/font = ExtResource("4_aeki8")
 theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
-text = "Start Game
-"
-script = ExtResource("7_03lha")
-
-[node name="Separator3" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SettingsButton" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(600, 125)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_aeki8")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
-text = "Settings
-"
-script = ExtResource("8_eq8ui")
-
-[node name="Separator4" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Exit_button" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(600, 125)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_aeki8")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
-text = "Exit
-"
-script = ExtResource("8_o3tkp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ika5")
+text = "Back"
+script = ExtResource("6_eikeb")
 
 [node name="settings" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -309,9 +320,127 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1ika5")
 text = "Back"
 script = ExtResource("6_eikeb")
 
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title_background" type="TextureRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6ws0e")
+
+[node name="buttons_container" type="MarginContainer" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="to_delete" type="VBoxContainer" parent="TitleScreen/buttons_container"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Separator" type="Control" parent="TitleScreen/buttons_container/to_delete"]
+layout_mode = 2
+
+[node name="Logotodelete" type="Label" parent="TitleScreen/buttons_container/to_delete"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 140
+text = "TITLE GOES HERE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/buttons_container"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/buttons_container/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Separator2" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
+text = "Start Game
+"
+script = ExtResource("7_03lha")
+
+[node name="Separator3" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
+text = "Settings
+"
+script = ExtResource("8_eq8ui")
+
+[node name="Separator4" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit_button" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
+text = "Exit
+"
+script = ExtResource("8_o3tkp")
+
+[connection signal="end_game" from="Untitled Cult Game/UI" to="Untitled Cult Game/MenuLayer/EndScreen" method="_on_ui_end_game"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up" to="Untitled Cult Game/UI" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up" to="Untitled Cult Game/event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up2" to="Untitled Cult Game/UI" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up2" to="Untitled Cult Game/event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up3" to="Untitled Cult Game/UI" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up3" to="Untitled Cult Game/event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up4" to="Untitled Cult Game/UI" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up4" to="Untitled Cult Game/event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up5" to="Untitled Cult Game/UI" method="_on_event_pop_up_bubble_signal"]
+[connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up5" to="Untitled Cult Game/event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="event_window_done" from="Untitled Cult Game/event_window1" to="Untitled Cult Game/Event_manager" method="_on_event_window_1_event_window_done"]
+[connection signal="game_start" from="name_page/LineEdit" to="." method="_on_line_edit_game_start"]
+[connection signal="game_start" from="name_page/LineEdit" to="audio_manager" method="_on_line_edit_game_start"]
+[connection signal="game_start" from="name_page/LineEdit" to="Untitled Cult Game" method="_on_line_edit_game_start"]
+[connection signal="game_start" from="name_page/LineEdit" to="Untitled Cult Game/intro_window" method="_on_line_edit_game_start"]
+[connection signal="game_start" from="name_page/LineEdit" to="Untitled Cult Game/MenuLayer" method="_on_line_edit_game_start"]
+[connection signal="game_start" from="name_page/LineEdit" to="Untitled Cult Game/GameTheme" method="_on_line_edit_game_start"]
 [connection signal="text_submitted" from="name_page/LineEdit" to="name_page/LineEdit" method="_on_text_submitted"]
+[connection signal="pressed" from="name_page/back_button2" to="name_page/back_button2" method="_on_pressed"]
+[connection signal="value_changed" from="settings/master_slider" to="audio_manager" method="_on_master_slider_value_changed"]
+[connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/Exit_button" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/Exit_button" method="_on_pressed"]
-[connection signal="value_changed" from="settings/master_slider" to="audio_manager" method="_on_master_slider_value_changed"]
-[connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]

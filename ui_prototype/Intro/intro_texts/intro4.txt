@@ -1,6 +1,4 @@
 OBJECTIVE:
 	
-You have to accumulate as much magic as possible before your summoning. You have
-5 days to do so, as cultists don't work on weekends. Use your ressources carefully,
-the ritual needs cultists to keep its funneled magic, the cultists need money to 
-live and you need both money and magic to keep your cultists loyalty high.
+You have to accumulate as much magic as possible before your summoning.
+You have 5 days to do so, as cultists don't work on weekends. Use your ressources carefully, the ritual needs cultists to keep its funneled magic, the cultists need money to live and you need both money and magic to keep your cultists loyalty high.

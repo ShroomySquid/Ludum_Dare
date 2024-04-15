@@ -27,10 +27,13 @@ offset_bottom = 482.0
 text = "Skip tutorial"
 
 [node name="intro_label" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 500)
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("1_5axjo")
 theme_override_font_sizes/font_size = 21
+autowrap_mode = 2
+justification_flags = 160
 
 [connection signal="pressed" from="continue_button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="skip_button" to="." method="_on_skip_button_pressed"]

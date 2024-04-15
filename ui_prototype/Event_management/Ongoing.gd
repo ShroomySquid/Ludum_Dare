@@ -13,7 +13,7 @@ var r_3:Resource_container
 var conclusion_1: String = "placeholder conclusion 1"
 var conclusion_2: String = "placeholder conclusion 2"
 var conclusion_3: String = "placeholder conclusion 3"
-var exclusive = -1
+var exclusive = 0
 var t_1
 var t_2
 var t_3

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtyp8htqy4fd2"]
+[gd_scene load_steps=8 format=3 uid="uid://dtyp8htqy4fd2"]
 
 [ext_resource type="Script" path="res://event_popup/event_button1.gd" id="1_5mu0g"]
 [ext_resource type="Script" path="res://event_popup/event_window1.gd" id="1_mxji7"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_xx7rv"]
+[ext_resource type="Texture2D" uid="uid://c7hwdlp703dvo" path="res://png/lieutenant1_protrait.png" id="3_if23m"]
 [ext_resource type="Script" path="res://event_popup/event_button2.gd" id="4_bigwu"]
 [ext_resource type="Script" path="res://event_popup/event_button3.gd" id="5_dx7kw"]
 
@@ -11,13 +12,14 @@
 [node name="event_window1" type="Window"]
 title = "NEW EVENT"
 position = Vector2i(300, 400)
-size = Vector2i(600, 300)
+size = Vector2i(900, 300)
 unresizable = true
 always_on_top = true
 theme_override_fonts/title_font = ExtResource("2_xx7rv")
 script = ExtResource("1_mxji7")
 
 [node name="event_text" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 500)
 offset_right = 40.0
 offset_bottom = 23.0
 theme = SubResource("Theme_lswx8")
@@ -28,30 +30,36 @@ theme_override_fonts/font = ExtResource("2_xx7rv")
 text = "You have decided to give your soul to me, so give up already.
 This is a big pile of text that makes no sense, so please stop reading
 it."
+autowrap_mode = 2
 justification_flags = 0
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(305, 135)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("3_if23m")
+
 [node name="event_button1" type="Button" parent="."]
-offset_left = 100.0
+offset_left = 400.0
 offset_top = 250.0
-offset_right = 200.0
+offset_right = 500.0
 offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("2_xx7rv")
 text = "option 1"
 script = ExtResource("1_5mu0g")
 
 [node name="event_button2" type="Button" parent="."]
-offset_left = 250.0
+offset_left = 550.0
 offset_top = 250.0
-offset_right = 350.0
+offset_right = 650.0
 offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("2_xx7rv")
 text = "option 2"
 script = ExtResource("4_bigwu")
 
 [node name="event_button3" type="Button" parent="."]
-offset_left = 400.0
+offset_left = 700.0
 offset_top = 250.0
-offset_right = 500.0
+offset_right = 800.0
 offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("2_xx7rv")
 text = "option 3"
@@ -61,6 +69,7 @@ script = ExtResource("5_dx7kw")
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="b1_pressed" from="event_button1" to="." method="_on_event_button_1_b_1_pressed"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_b1"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_button_1_pressed"]

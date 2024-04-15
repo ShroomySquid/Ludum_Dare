@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://n1e4vd3wmgj4"]
+[gd_scene load_steps=13 format=3 uid="uid://n1e4vd3wmgj4"]
 
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="2_iytib"]
 [ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="3_gmkf1"]
@@ -11,11 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="10_sibtu"]
 [ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="11_i12wa"]
 [ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="12_3mmgi"]
+[ext_resource type="PackedScene" uid="uid://bq5mnfnj6wl7q" path="res://event_popup/conclusion_window.tscn" id="12_yf3lf"]
 
 [node name="Untitled Cult Game" type="Node2D"]
 
 [node name="View" parent="." instance=ExtResource("3_gmkf1")]
 position = Vector2(0, 65)
+scale = Vector2(1.932, 1.999)
 
 [node name="UI" parent="." instance=ExtResource("2_iytib")]
 
@@ -79,6 +81,7 @@ grow_vertical = 1
 scale = Vector2(1, 1)
 
 [node name="EndScreen" parent="MenuLayer" instance=ExtResource("9_57u53")]
+visible = false
 offset_left = 138.0
 offset_top = -18.0
 offset_right = 2495.0
@@ -92,6 +95,8 @@ stream = ExtResource("11_i12wa")
 
 [node name="EndTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3mmgi")
+
+[node name="Conclusion_window" parent="." instance=ExtResource("12_yf3lf")]
 
 [connection signal="end_game" from="UI" to="MenuLayer/EndScreen" method="_on_ui_end_game"]
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]
