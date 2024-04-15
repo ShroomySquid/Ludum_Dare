@@ -16,6 +16,7 @@ var global_timer = 0
 var new_cultist_counter = 0
 var is_paused = true
 var in_intro = true
+var starve_timer = 1
 
 func _cultists_in_ritual(value: float):
 	if (is_paused == true):
@@ -75,7 +76,6 @@ func retry():
 	Engine.time_scale = 1
 	pass
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	menu.hide()
 	end_screen.hide()
@@ -94,7 +94,6 @@ func _ready():
 
 func _endTuto():
 	is_paused = false
-	print("ok")
 
 func magic_gen(delta):
 	var m = resources.get_re(Resources.r.MAGIC)
@@ -104,12 +103,35 @@ func magic_gen(delta):
 	elif d > 0:
 		resources.sub_re(Resources.r.MAGIC, d * delta / 20)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (Input.is_action_just_pressed("pause") && in_intro == false):
-		pauseMenu()
-	if (is_paused == true):
-		return
+func update_labels():
+	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
+	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
+	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
+	$prisoners_label.text = "Prisoners: " + str(resources.get_re(Resources.r.PRISONERS))
+	$money_label.text = "Money: " + str(int(resources.get_re(Resources.r.GOLD))) + "$"
+	if (global_timer < 180):
+		$day_label.text = "Monday"
+	elif (global_timer < 360):
+		$day_label.text = "Tuesday"
+	elif (global_timer < 540):
+		$day_label.text = "Wednesday"
+	elif (global_timer < 720):
+		$day_label.text = "Tuesday"
+	else:
+		$day_label.text = "Friday"
+
+func update_gold(delta):
+	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
+	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4)
+	if (resources.get_re(Resources.r.GOLD) <= 0):
+		starve_timer -= delta
+	else:
+		starve_timer = 1
+	if (starve_timer <= 0):
+		resources.sub_re(Resources.r.CULTISTS, 1)
+		starve_timer = 1
+
+func update_cultists(delta):
 	available_cultists = resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_recruitment - cultists_in_job
 	if available_cultists < 0:
 		if cultists_in_job + available_cultists >= 0:
@@ -124,52 +146,33 @@ func _process(delta):
 		available_cultists = 0
 		if resources.get_re(Resources.r.CULTISTS) == 0:
 			print("There are no cultists left. You suck")
-	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
+	new_cultist_counter += cultists_in_recruitment * delta
+	if (new_cultist_counter >= 300):
+		new_cultist_counter = 0
+		resources.add_re(Resources.r.CULTISTS, 1)
+
+func update_timer(delta):
 	global_timer += delta
 	if (global_timer >= 2):
 		is_paused = true
 		Engine.time_scale = 0
 		end_game.emit(resources.get_re(Resources.r.MAGIC))
-		#end_screen.set_score("Final score: " + str(Resources.r.MAGIC))
-		#if (resources.get_re(Resources.r.MAGIC) >= 1000000):
-			#print("cori tier")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 100000):
-			#print("damn good")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 10000):
-			#print("fine")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 1000):
-			#print("trash")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 1000):
-			#print("you really bloody suck")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 100):
-			#print("you didn't even try")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 10):
-			#print("you had to try to be this bad")
-		#elif (resources.get_re(Resources.r.MAGIC) >= 1):
-			#print("how")
 		end_screen.show()
-	#resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta / 20)
+
+func _process(delta):
+	update_labels()
+	if (Input.is_action_just_pressed("pause") && in_intro == false):
+		pauseMenu()
+	if (is_paused == true):
+		return
+	update_gold(delta)
+	update_cultists(delta)
+	update_timer(delta)
 	magic_gen(delta)
-	new_cultist_counter += cultists_in_recruitment * delta
-	if (new_cultist_counter >= 300):
-		new_cultist_counter = 0
-		resources.add_re(Resources.r.CULTISTS, 1)
-	if (resources.get_re(Resources.r.MAGIC) < 1):
-		is_paused = true
-		Engine.time_scale = 0
-		end_game.emit(resources.get_re(Resources.r.MAGIC))
-	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
-	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
-	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
-	$prisoners_label.text = "Prisoners: " + str(resources.get_re(Resources.r.PRISONERS))
-	$money_label.text = "Money: " + str(int(resources.get_re(Resources.r.GOLD))) + "$"
+	update_timer(delta)
+	if (int(resources.get_re(Resources.r.MAGIC)) == 0):
+		print("Dead you are, try again you must.")
 	if (resources.get_re(Resources.r.MAGIC) > peak_magic):
 		peak_magic = resources.get_re(Resources.r.MAGIC)
-	if (resources.get_re(Resources.r.MAGIC) < peak_magic / 2):
+	elif (resources.get_re(Resources.r.MAGIC) < peak_magic / 2):
 		resources.sub_re(Resources.r.LOYALTY, delta)
-	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
-	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4)
-
-
-func _on_end_game(score):
-	pass # Replace with function body.

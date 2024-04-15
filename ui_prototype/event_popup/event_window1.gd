@@ -7,6 +7,7 @@ var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.add_theme_icon_override("close", Texture2D.new())
 	self.hide()
 	#gui_embed_subwindows = true
 	pass # Replace with function body.

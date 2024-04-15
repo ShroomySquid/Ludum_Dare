@@ -23,7 +23,8 @@ You are <player_name>"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	self.add_theme_icon_override("close", Texture2D.new())
+	self.show()
 	load_file(file_paths)
 	#var content = ""
 	#var i = 0
