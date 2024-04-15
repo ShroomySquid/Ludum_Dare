@@ -5,9 +5,6 @@
 [node name="View" type="Node2D"]
 position = Vector2(258, 64)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(1664, 752)
-scale = Vector2(1.38462, 1.31489)
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1a4cn")
+centered = false

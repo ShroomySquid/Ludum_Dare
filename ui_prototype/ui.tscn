@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqh3trwm4smod"]
+[gd_scene load_steps=14 format=3 uid="uid://dqh3trwm4smod"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_vbxgf"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_a410q"]
+[ext_resource type="Theme" uid="uid://sbmqosn2acr2" path="res://Menu/button_theme.tres" id="3_dou7h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
 font_size = 45
@@ -27,17 +28,27 @@ font_size = 45
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.501961)
 
+[sub_resource type="Theme" id="Theme_4tt7h"]
+default_font = ExtResource("2_a410q")
+default_font_size = 0
+
 [sub_resource type="LabelSettings" id="LabelSettings_4bbdo"]
 line_spacing = 1.0
 font_size = 35
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.501961)
 
+[sub_resource type="Theme" id="Theme_pohvv"]
+default_font = ExtResource("2_a410q")
+
 [sub_resource type="LabelSettings" id="LabelSettings_dwhf1"]
 line_spacing = 1.0
 font_size = 46
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.501961)
+
+[sub_resource type="Theme" id="Theme_a0xn5"]
+default_font = ExtResource("2_a410q")
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -56,8 +67,8 @@ color = Color(0, 0.4, 0.4, 1)
 clip_contents = true
 layout_mode = 0
 offset_left = 10.0
-offset_right = 199.0
-offset_bottom = 66.0
+offset_right = 186.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_a410q")
 text = "Cultists:"
 label_settings = SubResource("LabelSettings_l3ewh")
@@ -65,9 +76,9 @@ label_settings = SubResource("LabelSettings_l3ewh")
 [node name="magic_label" type="Label" parent="."]
 clip_contents = true
 layout_mode = 0
-offset_left = 490.0
-offset_right = 642.0
-offset_bottom = 67.0
+offset_left = 437.0
+offset_right = 580.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_a410q")
 text = "Magic:"
 label_settings = SubResource("LabelSettings_335fy")
@@ -75,18 +86,18 @@ label_settings = SubResource("LabelSettings_335fy")
 [node name="loyalty_label" type="Label" parent="."]
 clip_contents = true
 layout_mode = 0
-offset_left = 970.0
-offset_right = 1151.0
-offset_bottom = 67.0
+offset_left = 863.0
+offset_right = 1033.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_a410q")
 text = "Loyalty:"
 label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="loyalty_bar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 1150.0
+offset_left = 1043.0
 offset_top = 8.0
-offset_right = 1395.0
+offset_right = 1268.0
 offset_bottom = 56.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -99,9 +110,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_g2tvy")
 [node name="prisoners_label" type="Label" parent="."]
 clip_contents = true
 layout_mode = 0
-offset_left = 1410.0
-offset_right = 1641.0
-offset_bottom = 67.0
+offset_left = 1280.0
+offset_right = 1490.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_a410q")
 text = "Prisoners:"
 label_settings = SubResource("LabelSettings_l3ewh")
@@ -109,11 +120,21 @@ label_settings = SubResource("LabelSettings_l3ewh")
 [node name="money_label" type="Label" parent="."]
 clip_contents = true
 layout_mode = 0
-offset_left = 1890.0
-offset_right = 2064.0
-offset_bottom = 67.0
+offset_left = 1707.0
+offset_right = 1867.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_a410q")
 text = "Money:"
+label_settings = SubResource("LabelSettings_l3ewh")
+
+[node name="day_label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 2133.0
+offset_right = 2312.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("2_a410q")
+text = "Monday"
 label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="Cultist_Send_Background" type="ColorRect" parent="."]
@@ -141,7 +162,9 @@ offset_top = 145.0
 offset_right = 268.0
 offset_bottom = 176.0
 scale = Vector2(2, 2)
+theme = SubResource("Theme_4tt7h")
 max_value = 1e+18
+alignment = 1
 
 [node name="Recruitment_Send_Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -168,7 +191,9 @@ offset_top = 295.0
 offset_right = 268.0
 offset_bottom = 326.0
 scale = Vector2(2, 2)
+theme = SubResource("Theme_pohvv")
 max_value = 1e+18
+alignment = 1
 
 [node name="Job_Send_Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -195,4 +220,96 @@ offset_top = 445.0
 offset_right = 268.0
 offset_bottom = 476.0
 scale = Vector2(2, 2)
+theme = SubResource("Theme_a0xn5")
 max_value = 1e+18
+alignment = 1
+
+[node name="Event_Progress_1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 525.0
+offset_right = 514.0
+offset_bottom = 593.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_1"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 608.0
+offset_right = 514.0
+offset_bottom = 676.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 691.0
+offset_right = 514.0
+offset_bottom = 759.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_3"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 772.0
+offset_right = 514.0
+offset_bottom = 840.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_4"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Event_Progress_5" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 855.0
+offset_right = 514.0
+offset_bottom = 923.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_5"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Pause_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1366.0
+offset_right = 69.0
+offset_bottom = 1421.0
+theme = ExtResource("3_dou7h")
+theme_override_font_sizes/font_size = 34
+text = "⏸"

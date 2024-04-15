@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://n1e4vd3wmgj4"]
+[gd_scene load_steps=12 format=3 uid="uid://n1e4vd3wmgj4"]
 
-[ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://png/background.png" id="1_paqku"]
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="2_iytib"]
 [ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="3_gmkf1"]
 [ext_resource type="PackedScene" uid="uid://diejjpsf5s6pd" path="res://Menu/menu.tscn" id="4_dhysq"]
@@ -8,55 +7,47 @@
 [ext_resource type="PackedScene" uid="uid://dtw641sruxwlq" path="res://event_popup/listener_bubble.tscn" id="5_ixf3o"]
 [ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="7_cd71p"]
 [ext_resource type="Script" path="res://Event_management/event_manager.gd" id="7_s0rid"]
+[ext_resource type="PackedScene" path="res://Menu/EndScreen.tscn" id="9_57u53"]
+[ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="10_sibtu"]
+[ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="11_i12wa"]
+[ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="12_3mmgi"]
 
 [node name="Untitled Cult Game" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-scale = Vector2(2, 2)
-texture = ExtResource("1_paqku")
-offset = Vector2(960, 540)
+[node name="View" parent="." instance=ExtResource("3_gmkf1")]
+position = Vector2(0, 65)
 
 [node name="UI" parent="." instance=ExtResource("2_iytib")]
 
-[node name="View" parent="." instance=ExtResource("3_gmkf1")]
-
-[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
-initial_position = 2
-
 [node name="event_pop_up" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 161.0
-offset_top = 61.0
-offset_right = 161.0
-offset_bottom = 61.0
+offset_left = 738.0
+offset_top = 273.0
+offset_right = 738.0
+offset_bottom = 273.0
 
 [node name="event_pop_up2" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 584.0
-offset_top = 52.0
-offset_right = 584.0
-offset_bottom = 52.0
+offset_left = 930.0
+offset_top = 787.0
+offset_right = 930.0
+offset_bottom = 787.0
 
 [node name="event_pop_up3" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 931.0
-offset_top = 59.0
-offset_right = 931.0
-offset_bottom = 59.0
+offset_left = 1650.0
+offset_top = 889.0
+offset_right = 1650.0
+offset_bottom = 889.0
 
 [node name="event_pop_up4" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1342.0
-offset_top = 97.0
-offset_right = 1342.0
-offset_bottom = 97.0
+offset_left = 1707.0
+offset_top = 225.0
+offset_right = 1707.0
+offset_bottom = 225.0
 
 [node name="event_pop_up5" parent="." instance=ExtResource("5_ixf3o")]
-offset_left = 1723.0
-offset_top = 105.0
-offset_right = 1723.0
-offset_bottom = 105.0
-
-[node name="Menu" parent="." instance=ExtResource("4_dhysq")]
-scale = Vector2(1, 1)
+offset_left = 1248.0
+offset_top = 402.0
+offset_right = 1248.0
+offset_bottom = 402.0
 
 [node name="Event_manager" type="Control" parent="."]
 layout_mode = 3
@@ -65,9 +56,44 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_s0rid")
 
-[node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
+[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
+initial_position = 1
+visible = false
+always_on_top = false
 
-[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]
+[node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
+initial_position = 1
+visible = false
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="MenuLayer" instance=ExtResource("4_dhysq")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1, 1)
+
+[node name="EndScreen" parent="MenuLayer" instance=ExtResource("9_57u53")]
+offset_left = 138.0
+offset_top = -18.0
+offset_right = 2495.0
+offset_bottom = 1448.0
+
+[node name="GameTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_sibtu")
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_i12wa")
+
+[node name="EndTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3mmgi")
+
+[connection signal="end_game" from="UI" to="MenuLayer/EndScreen" method="_on_ui_end_game"]
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up2" to="UI" method="_on_event_pop_up_bubble_signal"]
@@ -78,3 +104,4 @@ script = ExtResource("7_s0rid")
 [connection signal="bubble_signal" from="event_pop_up4" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up5" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up5" to="event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]

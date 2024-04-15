@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtw641sruxwlq"]
+[gd_scene load_steps=5 format=3 uid="uid://dtw641sruxwlq"]
 
+[ext_resource type="Texture2D" uid="uid://5tlffxthyg2m" path="res://speech-bubble-click.png" id="2_gocib"]
 [ext_resource type="Texture2D" uid="uid://d188ree7ngeks" path="res://speech-bubble.png" id="2_tl7gs"]
+[ext_resource type="Texture2D" uid="uid://barfam078e5kl" path="res://speech-bubble-hover.png" id="3_etk1y"]
 
 [sub_resource type="GDScript" id="GDScript_q62fq"]
 script/source = "extends Control
@@ -29,7 +31,9 @@ script = SubResource("GDScript_q62fq")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.76, 1)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("2_tl7gs")
+texture_pressed = ExtResource("2_gocib")
+texture_hover = ExtResource("3_etk1y")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -7,20 +7,25 @@ var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.add_theme_icon_override("close", Texture2D.new())
 	self.hide()
+	#gui_embed_subwindows = true
 	pass # Replace with function body.
 
 func get_player_res():
 	return UI.available_cultists
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
 func _on_event_b1():
 	print("b1")
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_1)
+	loaded_event.reward = loaded_event.r_1
+	loaded_event.timer = loaded_event.t_1
+	loaded_event.t_chosen = loaded_event.t_1
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -31,6 +36,9 @@ func _on_event_b1():
 func _on_event_b2():
 	print("b2")
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_2)
+	loaded_event.reward = loaded_event.r_2
+	loaded_event.timer = loaded_event.t_2
+	loaded_event.t_chosen = loaded_event.t_2
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -41,6 +49,9 @@ func _on_event_b2():
 func _on_event_b3():
 	print("b3")
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_3)
+	loaded_event.reward = loaded_event.r_3
+	loaded_event.timer = loaded_event.t_3
+	loaded_event.t_chosen = loaded_event.t_3
 	loaded_event.is_active = true
 	self.hide()
 	active = false
