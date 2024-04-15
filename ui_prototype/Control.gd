@@ -46,6 +46,7 @@ func pauseMenu():
 		Engine.time_scale = 0
 		menu.show()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	menu.hide()
