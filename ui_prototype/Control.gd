@@ -142,7 +142,7 @@ func update_labels():
 			elif (n == 3):
 				$Event_Progress_3.show()
 				$Event_Progress_3.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
-			elif (n == 4):
+			else:
 				$Event_Progress_4.show()
 				$Event_Progress_4.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
 				return
@@ -202,6 +202,15 @@ func _process(delta):
 	update_timer(delta)
 	if (int(resources.get_re(Resources.r.MAGIC)) == 0):
 		print("Dead you are, try again you must.")
+	get_parent().get_node("View").get_node("background").hide()
+	get_parent().get_node("View").get_node("background2").hide()
+	get_parent().get_node("View").get_node("background2").hide()
+	if (resources.get_re(Resources.r.MAGIC) < 10000):
+		get_parent().get_node("View").get_node("background").show()
+	elif (resources.get_re(Resources.r.MAGIC) < 2500):
+		get_parent().get_node("View").get_node("background2").show()
+	else:
+		get_parent().get_node("View").get_node("background3").show()
 	if (resources.get_re(Resources.r.MAGIC) > peak_magic):
 		peak_magic = resources.get_re(Resources.r.MAGIC)
 	elif (resources.get_re(Resources.r.MAGIC) < peak_magic / 2):
