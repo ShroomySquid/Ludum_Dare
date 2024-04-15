@@ -57,6 +57,7 @@ func _process(delta):
 				print("event " + str(i) + " resolved (" + ongoing_event[i].event_text + ")")
 			else:
 				print("event " + str(i) + " failed (" + ongoing_event[i].event_text + ")")
+			$"../Conclusion_window".add_event(ongoing_event[i])
 			ongoing_event[i] = Event_container.new()
 	if t > 1:
 		t -= 1
@@ -64,9 +65,10 @@ func _process(delta):
 		if !ongoing_event[guy].is_placeholder:
 			return
 		if randi_range(1, 100) < event_chance:
-			if event_pool.size() == 0:
+			if event_pool.is_empty():
 				generate_pool()
 			var e = randi_range(0, event_pool.size() - 1)
+			event_pool[e].exclusive = guy
 			popups[guy].load_event(event_pool[e])
 			ongoing_event[guy] = event_pool[e]
 			event_pool.pop_at(e)

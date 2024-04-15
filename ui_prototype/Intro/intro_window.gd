@@ -78,7 +78,7 @@ func load_file(file_paths: Array) -> void:
 		
 		# Read file content
 		var file_content = file.get_as_text()
-		texts[j] += file_content
+		texts[j] = file_content
 		
 		# Close the file
 		file.close()

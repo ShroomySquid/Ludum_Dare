@@ -23,9 +23,9 @@ theme_override_fonts/title_font = ExtResource("2_xx7rv")
 script = ExtResource("1_mxji7")
 
 [node name="event_text" type="Label" parent="."]
-offset_left = 400.0
-offset_right = 893.0
-offset_bottom = 72.0
+custom_minimum_size = Vector2(800, 500)
+offset_right = 40.0
+offset_bottom = 23.0
 theme = SubResource("Theme_lswx8")
 theme_override_colors/font_color = Color(0.156863, 0.0431373, 0.0196078, 1)
 theme_override_colors/font_shadow_color = Color(0.741176, 0, 0.615686, 1)
@@ -34,6 +34,7 @@ theme_override_fonts/font = ExtResource("2_xx7rv")
 text = "You have decided to give your soul to me, so give up already.
 This is a big pile of text that makes no sense, so please stop reading
 it."
+autowrap_mode = 2
 justification_flags = 0
 
 [node name="lieutenant1" type="Sprite2D" parent="."]
@@ -95,6 +96,7 @@ script = ExtResource("5_dx7kw")
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="b1_pressed" from="event_button1" to="." method="_on_event_button_1_b_1_pressed"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_button_1_pressed"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_b1"]
