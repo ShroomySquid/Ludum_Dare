@@ -161,6 +161,8 @@ func update_timer(delta):
 
 func _process(delta):
 	update_labels()
+	if (!game_theme.playing):
+		game_theme.play()
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
 		pauseMenu()
 	if (is_paused == true):

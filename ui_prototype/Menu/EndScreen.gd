@@ -1,6 +1,7 @@
 extends Control
 
 @onready var main = $"../../UI"
+@onready var end_theme = $"../../EndTheme"
 #var resources: Resource_container = Resource_container.new()
 func _process(_delta):
 	pass
@@ -12,9 +13,7 @@ func _on_try_again_pressed():
 	main.retry()
 
 func _on_ui_end_game(score):
-	#var score = resources.get_re(Resources.r.MAGIC)
-	#$FinalScore.text = "Final score: "
-	#print(score)
+	end_theme.play()
 	if score < 1:
 		score = 0
 	$FinalScore.text = "Final score: " + str(int(score))
