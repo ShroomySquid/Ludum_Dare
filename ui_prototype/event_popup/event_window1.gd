@@ -25,6 +25,7 @@ func _on_event_b1():
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_1)
 	loaded_event.reward = loaded_event.r_1
 	loaded_event.timer = loaded_event.t_1
+	loaded_event.t_chosen = loaded_event.t1
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -37,6 +38,7 @@ func _on_event_b2():
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_2)
 	loaded_event.reward = loaded_event.r_2
 	loaded_event.timer = loaded_event.t_2
+	loaded_event.t_chosen = loaded_event.t2
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -49,6 +51,7 @@ func _on_event_b3():
 	UI.resources = Resource_container.combine(UI.resources, loaded_event.cost_3)
 	loaded_event.reward = loaded_event.r_3
 	loaded_event.timer = loaded_event.t_3
+	loaded_event.t_chosen = loaded_event.t3
 	loaded_event.is_active = true
 	self.hide()
 	active = false
