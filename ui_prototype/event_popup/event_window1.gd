@@ -8,13 +8,14 @@ var active = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.hide()
+	#gui_embed_subwindows = true
 	pass # Replace with function body.
 
 func get_player_res():
 	return UI.available_cultists
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 

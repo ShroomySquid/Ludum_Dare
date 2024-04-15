@@ -1,6 +1,6 @@
 extends Control
 
-@onready var main = $"../UI"
+@onready var main = $"../../UI"
 
 func _ready():
 	pass # Replace with function body.

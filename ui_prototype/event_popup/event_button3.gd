@@ -18,7 +18,7 @@ func _on_pressed():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (!Resource_container.compare(par.UI.resources, cost) || par.UI.available_cultists < - cost.get_re(Resources.r.CULTISTS)):
 		disabled = true
 	else:

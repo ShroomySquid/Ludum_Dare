@@ -43,7 +43,7 @@ func _ready():
 		label_node.text = intro_first + texts[0]
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_s_key_pressed():
@@ -91,6 +91,7 @@ func _on_button_pressed():
 	if i >= ALL_TXT:
 		get_parent().get_node("UI").is_paused = false
 		get_parent().get_node("UI").in_intro = false
+		Engine.time_scale = 1
 		self.hide()
 		pass
 	else:

@@ -22,9 +22,6 @@ offset = Vector2(960, 540)
 
 [node name="View" parent="." instance=ExtResource("3_gmkf1")]
 
-[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
-initial_position = 2
-
 [node name="event_pop_up" parent="." instance=ExtResource("5_ixf3o")]
 offset_left = 161.0
 offset_top = 61.0
@@ -55,9 +52,6 @@ offset_top = 105.0
 offset_right = 1723.0
 offset_bottom = 105.0
 
-[node name="Menu" parent="." instance=ExtResource("4_dhysq")]
-scale = Vector2(1, 1)
-
 [node name="Event_manager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -65,9 +59,21 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_s0rid")
 
+[node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
+initial_position = 2
+always_on_top = false
+
 [node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
 
-[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="MenuLayer" instance=ExtResource("4_dhysq")]
+offset_left = -1132.0
+offset_top = -712.0
+offset_right = 1428.0
+offset_bottom = 728.0
+scale = Vector2(1, 1)
+
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up2" to="UI" method="_on_event_pop_up_bubble_signal"]
@@ -78,3 +84,4 @@ script = ExtResource("7_s0rid")
 [connection signal="bubble_signal" from="event_pop_up4" to="event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up5" to="UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="event_pop_up5" to="event_window1" method="_on_event_pop_up_bubble_signal"]
+[connection signal="event_window_done" from="event_window1" to="Event_manager" method="_on_event_window_1_event_window_done"]
