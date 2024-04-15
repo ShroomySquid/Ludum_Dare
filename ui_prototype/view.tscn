@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ci01t38757bvr"]
 
-[ext_resource type="Texture2D" uid="uid://dnuahqnfobt6c" path="res://png/Chappelle.png" id="1_4j2tr"]
+[ext_resource type="Texture2D" uid="uid://cbpnhdu8wyb3e" path="res://png/Chappelle_RITUEL_LVL_1.png" id="1_4y5ll"]
 [ext_resource type="Texture2D" uid="uid://dikknbat5kwn7" path="res://png/Chappelle_RITUEL_LVL_2.png" id="2_0jwm5"]
 [ext_resource type="Texture2D" uid="uid://cocejq1ag33tb" path="res://png/Lieutenant_1.png" id="2_xvcxb"]
 [ext_resource type="Texture2D" uid="uid://b1nh8c21efdvc" path="res://png/Lieutenant_2.png" id="3_bm3il"]
@@ -13,7 +13,7 @@
 position = Vector2(258, 64)
 
 [node name="background" type="Sprite2D" parent="."]
-texture = ExtResource("1_4j2tr")
+texture = ExtResource("1_4y5ll")
 centered = false
 
 [node name="background2" type="Sprite2D" parent="."]

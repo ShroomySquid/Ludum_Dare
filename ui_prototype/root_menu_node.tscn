@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://cqg8o57sy02um"]
 
-[ext_resource type="PackedScene" uid="uid://b64k0dhbslb86" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://root_menu_node.gd" id="1_wq6na"]
 [ext_resource type="Script" path="res://Untitled Cult Game.gd" id="2_uhcsa"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="15_wjeam"]
 [ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="16_skrke"]
 [ext_resource type="PackedScene" uid="uid://diejjpsf5s6pd" path="res://Menu/menu.tscn" id="17_d177q"]
-[ext_resource type="PackedScene" uid="uid://ba8rt35jlr4s3" path="res://Menu/EndScreen.tscn" id="18_wpg3x"]
+[ext_resource type="PackedScene" path="res://Menu/EndScreen.tscn" id="18_wpg3x"]
 [ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="19_njy2c"]
 [ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="20_s5itj"]
 [ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="21_whkf7"]
@@ -49,6 +49,7 @@ script = ExtResource("2_uhcsa")
 
 [node name="View" parent="Untitled Cult Game" instance=ExtResource("11_52ixn")]
 position = Vector2(0, 65)
+scale = Vector2(1.932, 1.999)
 
 [node name="UI" parent="Untitled Cult Game" instance=ExtResource("12_ia3re")]
 
