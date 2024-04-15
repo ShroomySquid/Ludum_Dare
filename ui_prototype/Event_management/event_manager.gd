@@ -42,6 +42,8 @@ func generate_pool():
 func _process(delta):
 	t += delta
 	for i in range(5):
+		if ongoing_event[i].is_placeholder:
+			break
 		if ongoing_event[i].is_active:
 			ongoing_event[i].timer -= delta
 		if ongoing_event[i].timer <= 0:
