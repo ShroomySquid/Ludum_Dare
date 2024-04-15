@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqg8o57sy02um"]
+[gd_scene load_steps=13 format=3 uid="uid://cqg8o57sy02um"]
 
-[ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="PackedScene" uid="uid://b64k0dhbslb86" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
 [ext_resource type="Script" path="res://LineEdit.gd" id="4_6dy8q"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="4_aeki8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://back_button.gd" id="6_eikeb"]
 [ext_resource type="Script" path="res://StartButton.gd" id="7_03lha"]
 [ext_resource type="Script" path="res://SettingsButton.gd" id="8_eq8ui"]
+[ext_resource type="Script" path="res://Exit_button.gd" id="8_o3tkp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0je0y"]
 bg_color = Color(0.152941, 0.152941, 0.152941, 0.839216)
@@ -165,7 +166,23 @@ text = "Settings
 "
 script = ExtResource("8_eq8ui")
 
+[node name="Separator4" type="Control" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit_button" type="Button" parent="TitleScreen/buttons_container/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0je0y")
+text = "Exit
+"
+script = ExtResource("8_o3tkp")
+
 [node name="settings" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -295,5 +312,6 @@ script = ExtResource("6_eikeb")
 [connection signal="text_submitted" from="name_page/LineEdit" to="name_page/LineEdit" method="_on_text_submitted"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
+[connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/Exit_button" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/Exit_button" method="_on_pressed"]
 [connection signal="value_changed" from="settings/master_slider" to="audio_manager" method="_on_master_slider_value_changed"]
 [connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]
