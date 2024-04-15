@@ -26,6 +26,7 @@ func _on_event_b1():
 	loaded_event.reward = loaded_event.r_1
 	loaded_event.timer = loaded_event.t_1
 	loaded_event.t_chosen = loaded_event.t_1
+	loaded_event.choice = 1
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -39,6 +40,7 @@ func _on_event_b2():
 	loaded_event.reward = loaded_event.r_2
 	loaded_event.timer = loaded_event.t_2
 	loaded_event.t_chosen = loaded_event.t_2
+	loaded_event.choice = 2
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -52,6 +54,7 @@ func _on_event_b3():
 	loaded_event.reward = loaded_event.r_3
 	loaded_event.timer = loaded_event.t_3
 	loaded_event.t_chosen = loaded_event.t_3
+	loaded_event.choice = 3
 	loaded_event.is_active = true
 	self.hide()
 	active = false

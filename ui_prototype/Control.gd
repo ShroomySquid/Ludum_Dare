@@ -17,6 +17,9 @@ var new_cultist_counter = 0
 var is_paused = true
 var in_intro = true
 var starve_timer = 1
+var magic_modifier = 1
+var living_cost = 1
+var static_magic = 0
 
 func _cultists_in_ritual(value: float):
 	if (is_paused == true):
@@ -101,10 +104,11 @@ func _endTuto():
 func magic_gen(delta):
 	var m = resources.get_re(Resources.r.MAGIC)
 	var d = (m - cultists_in_ritual * 100)
-	if d <= -1000:
-		resources.sub_re(Resources.r.MAGIC, (d + 1000) * delta / 20)
+	if d <= (-1000 / magic_modifier):
+		resources.sub_re(Resources.r.MAGIC, (d + 1000 / magic_modifier) * delta / 20)
 	elif d > 0:
-		resources.sub_re(Resources.r.MAGIC, d * delta / 20)
+		resources.sub_re(Resources.r.MAGIC, d * delta / (20 / magic_modifier))
+	resources.add_re(Resources.r.MAGIC, delta * static_magic)
 
 func update_labels():
 	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
@@ -150,7 +154,7 @@ func update_labels():
 
 func update_gold(delta):
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
-	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4)
+	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) - cultists_in_job) * delta * 4 * living_cost)
 	if (resources.get_re(Resources.r.GOLD) <= 0):
 		starve_timer -= delta
 	else:
