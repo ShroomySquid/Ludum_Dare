@@ -153,7 +153,7 @@ func update_cultists(delta):
 
 func update_timer(delta):
 	global_timer += delta
-	if (global_timer >= 2):
+	if (global_timer >= 900):
 		is_paused = true
 		Engine.time_scale = 0
 		end_game.emit(resources.get_re(Resources.r.MAGIC))
