@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://n1e4vd3wmgj4"]
+[gd_scene load_steps=8 format=3 uid="uid://n1e4vd3wmgj4"]
 
-[ext_resource type="Texture2D" uid="uid://b41stcd6g33mi" path="res://png/background.png" id="1_paqku"]
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="2_iytib"]
 [ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="3_gmkf1"]
 [ext_resource type="PackedScene" uid="uid://diejjpsf5s6pd" path="res://Menu/menu.tscn" id="4_dhysq"]
@@ -10,13 +9,6 @@
 [ext_resource type="Script" path="res://Event_management/event_manager.gd" id="7_s0rid"]
 
 [node name="Untitled Cult Game" type="Node2D"]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-scale = Vector2(2, 2)
-texture = ExtResource("1_paqku")
-offset = Vector2(960, 540)
 
 [node name="View" parent="." instance=ExtResource("3_gmkf1")]
 position = Vector2(0, 65)
