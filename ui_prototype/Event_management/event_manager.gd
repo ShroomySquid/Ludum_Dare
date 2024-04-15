@@ -3,7 +3,7 @@ extends Control
 @onready var popups = [$"../event_pop_up", $"../event_pop_up2", $"../event_pop_up3", $"../event_pop_up4", $"../event_pop_up5"]
 var ongoing_event = [Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new()]
 
-var event_chance = 50
+var event_chance = 100
 var t = 0
 
 #var event_0: Event_container = Event_container.new(0, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])])
@@ -50,6 +50,7 @@ func _process(delta):
 			if event_pool.size() == 0:
 				for i in range(10):
 					event_pool.append(Event_container.new(2, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])]))
+					event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
 					event_pool[i].set_event_text("This is event_" + str(i))
 					print("event_pool refreshed")
 			var e = randi_range(0, event_pool.size() - 1)
