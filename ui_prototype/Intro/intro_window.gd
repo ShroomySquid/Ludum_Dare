@@ -1,15 +1,17 @@
 extends Window
 
-const ALL_TXT = 3
+const ALL_TXT = 4
 
 var file_paths = [
 	'res://Intro/intro_texts/intro1.txt',
 	'res://Intro/intro_texts/intro2.txt',
-	'res://Intro/intro_texts/intro3.txt'
+	'res://Intro/intro_texts/intro3.txt',
+	'res://Intro/intro_texts/intro4.txt'
 ]
 
 var i = 0
 var texts = [
+	"",
 	"",
 	"",
 	""

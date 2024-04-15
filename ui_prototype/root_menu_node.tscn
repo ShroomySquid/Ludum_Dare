@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=13 format=3 uid="uid://cqg8o57sy02um"]
-=======
-[gd_scene load_steps=12 format=3 uid="uid://bttiw6qjxoywv"]
->>>>>>> intro
 
 [ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
