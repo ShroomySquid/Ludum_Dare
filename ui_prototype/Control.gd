@@ -2,7 +2,7 @@ extends Control
 class_name GAME
 @onready var menu = $"../Menu"
 var resources: Resource_container = Resource_container.new()
-@export var available_cultists = 0
+@export var available_cultists = 10
 var peak_magic = 1000
 var cultists_in_ritual = 10
 var cultists_in_recruitment = 0
@@ -11,6 +11,7 @@ var global_timer = 0
 var new_cultist_counter = 0
 var is_paused = true
 var in_intro = true
+var starve_timer = 1
 
 func _cultists_in_ritual(value: float):
 	if (is_paused == true):
@@ -64,14 +65,25 @@ func _ready():
 
 func _endTuto():
 	is_paused = false
-	print("ok")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
+	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
+	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
+	$prisoners_label.text = "Prisoners: " + str(resources.get_re(Resources.r.PRISONERS))
+	$money_label.text = "Money: " + str(int(resources.get_re(Resources.r.GOLD))) + "$"
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
 		pauseMenu()
 	if (is_paused == true):
 		return
+	if (resources.get_re(Resources.r.GOLD) == 0):
+		starve_timer -= delta
+	else:
+		starve_timer = 1
+	if (starve_timer <= 0):
+		resources.sub_re(Resources.r.CULTISTS, 1)
+		starve_timer = 1
 	available_cultists = resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_recruitment - cultists_in_job
 	if available_cultists < 0:
 		if cultists_in_job + available_cultists >= 0:
@@ -105,18 +117,16 @@ func _process(delta):
 			print("you had to try to be this bad")
 		elif (resources.get_re(Resources.r.MAGIC) >= 1):
 			print("how")
-	resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta)
+	if (resources.get_re(Resources.r.MAGIC) >= cultists_in_ritual * 100):
+		resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta)
+	else:
+		resources.add_re(Resources.r.MAGIC, (cultists_in_ritual * 100 - resources.get_re(Resources.r.MAGIC)) * delta / 20)
 	new_cultist_counter += cultists_in_recruitment * delta
 	if (new_cultist_counter >= 300):
 		new_cultist_counter = 0
 		resources.add_re(Resources.r.CULTISTS, 1)
 	if (int(resources.get_re(Resources.r.MAGIC)) == 0):
 		print("Dead you are, try again you must.")
-	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
-	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
-	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
-	$prisoners_label.text = "Prisoners: " + str(resources.get_re(Resources.r.PRISONERS))
-	$money_label.text = "Money: " + str(int(resources.get_re(Resources.r.GOLD))) + "$"
 	if (resources.get_re(Resources.r.MAGIC) > peak_magic):
 		peak_magic = resources.get_re(Resources.r.MAGIC)
 	if (resources.get_re(Resources.r.MAGIC) < peak_magic / 2):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqg8o57sy02um"]
+[gd_scene load_steps=12 format=3 uid="uid://d18h7dek8j51y"]
 
 [ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
@@ -166,6 +166,7 @@ text = "Settings
 script = ExtResource("8_eq8ui")
 
 [node name="settings" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
