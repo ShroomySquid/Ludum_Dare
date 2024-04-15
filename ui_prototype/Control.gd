@@ -43,6 +43,8 @@ func _cultists_in_job(value: float):
 	$Job_Send.value = cultists_in_job
 
 func pauseMenu():
+	if in_intro:
+		return
 	if is_paused:
 		is_paused = false
 		Engine.time_scale = 1
@@ -88,6 +90,7 @@ func _ready():
 	$Cultist_Send.value_changed.connect(self._cultists_in_ritual)
 	$Recruitment_Send.value = cultists_in_recruitment
 	$Recruitment_Send.value_changed.connect(self._cultists_in_recruitment)
+	$Pause_Button.pressed.connect(self.pauseMenu)
 	$Job_Send.value = cultists_in_job
 	$Job_Send.value_changed.connect(self._cultists_in_job)
 	Engine.time_scale = 0
@@ -119,6 +122,31 @@ func update_labels():
 		$day_label.text = "Tuesday"
 	else:
 		$day_label.text = "Friday"
+	$Event_Progress_1.hide()
+	$Event_Progress_2.hide()
+	$Event_Progress_3.hide()
+	$Event_Progress_4.hide()
+	$Event_Progress_5.hide()
+	var n = 0
+	for i in range(5):
+		if (get_parent().get_node("Event_manager").ongoing_event[i].is_active == true && get_parent().get_node("Event_manager").ongoing_event[i].is_placeholder == false && get_parent().get_node("Event_manager").ongoing_event[i].t_chosen != 0):
+			if (n == 0):
+				$Event_Progress_1.show()
+				$Event_Progress_1.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
+			elif (n == 1):
+				$Event_Progress_2.show()
+				$Event_Progress_2.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
+			elif (n == 2):
+				$Event_Progress_3.show()
+				$Event_Progress_3.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
+			elif (n == 3):
+				$Event_Progress_3.show()
+				$Event_Progress_3.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
+			elif (n == 4):
+				$Event_Progress_4.show()
+				$Event_Progress_4.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[i].timer / get_parent().get_node("Event_manager").ongoing_event[i].t_chosen * 100
+				return
+			n += 1
 
 func update_gold(delta):
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
