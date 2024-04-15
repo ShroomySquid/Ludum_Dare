@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci01t38757bvr"]
+[gd_scene load_steps=9 format=3 uid="uid://ci01t38757bvr"]
 
-[ext_resource type="Texture2D" uid="uid://db7ba6ox51omc" path="res://png/background2.png" id="1_1a4cn"]
+[ext_resource type="Texture2D" uid="uid://dnuahqnfobt6c" path="res://png/Chappelle.png" id="1_4j2tr"]
+[ext_resource type="Texture2D" uid="uid://dikknbat5kwn7" path="res://png/Chappelle_RITUEL_LVL_2.png" id="2_0jwm5"]
 [ext_resource type="Texture2D" uid="uid://cocejq1ag33tb" path="res://png/Lieutenant_1.png" id="2_xvcxb"]
 [ext_resource type="Texture2D" uid="uid://b1nh8c21efdvc" path="res://png/Lieutenant_2.png" id="3_bm3il"]
+[ext_resource type="Texture2D" uid="uid://yf5b14drf6e4" path="res://png/Chappelle_RITUEL_LVL_3.png" id="3_oowcw"]
 [ext_resource type="Texture2D" uid="uid://8bs3lm78lfbk" path="res://png/Lieutenant_3.png" id="4_5iwre"]
 [ext_resource type="Texture2D" uid="uid://c6j8pgvi1eomm" path="res://png/Lieutenant_4.png" id="5_boal1"]
 [ext_resource type="Texture2D" uid="uid://dnsdsal86f24p" path="res://png/Lieutenant_5.png" id="6_hnh0c"]
@@ -11,7 +13,17 @@
 position = Vector2(258, 64)
 
 [node name="background" type="Sprite2D" parent="."]
-texture = ExtResource("1_1a4cn")
+texture = ExtResource("1_4j2tr")
+centered = false
+
+[node name="background2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_0jwm5")
+centered = false
+
+[node name="background3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_oowcw")
 centered = false
 
 [node name="lieutenant1" type="Sprite2D" parent="."]
