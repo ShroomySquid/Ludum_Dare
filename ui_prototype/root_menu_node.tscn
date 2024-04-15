@@ -364,6 +364,8 @@ offset_top = 715.0
 offset_right = 1153.0
 offset_bottom = 731.0
 scale = Vector2(2.88, 3.1104)
+min_value = -80.0
+max_value = 24.0
 
 [node name="sound_slider" type="HSlider" parent="settings"]
 layout_mode = 0
@@ -372,6 +374,9 @@ offset_top = 888.0
 offset_right = 1153.0
 offset_bottom = 904.0
 scale = Vector2(2.88, 3.1104)
+min_value = -80.0
+max_value = 24.0
+value = 12.0
 
 [node name="back_button" type="Button" parent="settings"]
 layout_mode = 0
@@ -509,6 +514,9 @@ script = ExtResource("8_o3tkp")
 [connection signal="text_submitted" from="name_page/LineEdit" to="name_page/LineEdit" method="_on_text_submitted"]
 [connection signal="pressed" from="name_page/back_button2" to="name_page/back_button2" method="_on_pressed"]
 [connection signal="value_changed" from="settings/master_slider" to="audio_manager" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="settings/music_slider" to="audio_manager" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="settings/music_slider" to="Untitled Cult Game/GameTheme" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="settings/sound_slider" to="archons_sounds" method="_on_sound_slider_value_changed"]
 [connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]

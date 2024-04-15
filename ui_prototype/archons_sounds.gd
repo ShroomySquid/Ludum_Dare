@@ -13,5 +13,7 @@ func _ready():
 	sound_array.append(preload("res://audio/Voix3_4.mp3"))
 	sound_array.append(preload("res://audio/Voix4_1.mp3"))
 	sound_array.append(preload("res://audio/Voix5_1.mp3"))
+	
 
-
+func _on_sound_slider_value_changed(value):
+	self.volume_db = value
