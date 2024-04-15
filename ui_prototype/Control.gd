@@ -38,6 +38,8 @@ func _cultists_in_job(value: float):
 	$Job_Send.value = cultists_in_job
 
 func pauseMenu():
+	if in_intro:
+		return
 	if is_paused:
 		is_paused = false
 		Engine.time_scale = 1
@@ -59,6 +61,7 @@ func _ready():
 	$Cultist_Send.value_changed.connect(self._cultists_in_ritual)
 	$Recruitment_Send.value = cultists_in_recruitment
 	$Recruitment_Send.value_changed.connect(self._cultists_in_recruitment)
+	$Pause_Button.pressed.connect(self.pauseMenu)
 	$Job_Send.value = cultists_in_job
 	$Job_Send.value_changed.connect(self._cultists_in_job)
 	Engine.time_scale = 0
@@ -80,6 +83,7 @@ func update_labels():
 	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
 	$prisoners_label.text = "Prisoners: " + str(resources.get_re(Resources.r.PRISONERS))
 	$money_label.text = "Money: " + str(int(resources.get_re(Resources.r.GOLD))) + "$"
+	$Event_Progress_1.get_node("Progress").value = get_parent().get_node("Event_manager").ongoing_event[0]
 	if (global_timer < 180):
 		$day_label.text = "Monday"
 	elif (global_timer < 360):

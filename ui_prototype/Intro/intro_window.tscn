@@ -20,10 +20,10 @@ text = "OK"
 icon_alignment = 1
 
 [node name="skip_button" type="Button" parent="."]
-offset_left = 695.0
-offset_top = 467.0
-offset_right = 798.0
-offset_bottom = 498.0
+offset_left = 680.0
+offset_top = 450.0
+offset_right = 783.0
+offset_bottom = 482.0
 text = "Skip tutorial"
 
 [node name="intro_label" type="Label" parent="."]

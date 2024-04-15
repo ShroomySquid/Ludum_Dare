@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqh3trwm4smod"]
+[gd_scene load_steps=14 format=3 uid="uid://dqh3trwm4smod"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_vbxgf"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_a410q"]
+[ext_resource type="Theme" uid="uid://sbmqosn2acr2" path="res://Menu/button_theme.tres" id="3_dou7h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ewh"]
 font_size = 45
@@ -130,10 +131,10 @@ label_settings = SubResource("LabelSettings_l3ewh")
 clip_contents = true
 layout_mode = 0
 offset_left = 2133.0
-offset_right = 2228.0
+offset_right = 2312.0
 offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_a410q")
-text = "Day:"
+text = "Monday"
 label_settings = SubResource("LabelSettings_l3ewh")
 
 [node name="Cultist_Send_Background" type="ColorRect" parent="."]
@@ -222,3 +223,29 @@ scale = Vector2(2, 2)
 theme = SubResource("Theme_a0xn5")
 max_value = 1e+18
 alignment = 1
+
+[node name="Event_Progress_1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 525.0
+offset_right = 514.0
+offset_bottom = 593.0
+color = Color(0, 0.4, 0.4, 1)
+
+[node name="Progress" type="ProgressBar" parent="Event_Progress_1"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 64.0
+show_percentage = false
+
+[node name="Pause_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1366.0
+offset_right = 69.0
+offset_bottom = 1421.0
+theme = ExtResource("3_dou7h")
+theme_override_font_sizes/font_size = 34
+text = "⏸"
