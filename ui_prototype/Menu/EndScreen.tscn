@@ -33,10 +33,11 @@ texture = ExtResource("2_3h5de")
 
 [node name="FinalScore" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1170.59
-offset_top = 291.176
-offset_right = 1986.59
-offset_bottom = 496.176
+offset_left = 450.001
+offset_top = 392.646
+offset_right = 1306.0
+offset_bottom = 597.646
+theme_override_fonts/font = ExtResource("3_esequ")
 theme_override_font_sizes/font_size = 150
 text = "Final score: 
 "
@@ -70,10 +71,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mw7cx")
 text = "Try Again"
 
 [node name="EndMsg" type="Label" parent="."]
-offset_left = 1566.18
-offset_top = 879.41
-offset_right = 1931.18
-offset_bottom = 1292.41
+layout_mode = 0
+offset_left = 457.354
+offset_top = 942.646
+offset_right = 822.354
+offset_bottom = 1355.65
+theme_override_fonts/font = ExtResource("3_esequ")
 theme_override_font_sizes/font_size = 150
 text = "Bye
 

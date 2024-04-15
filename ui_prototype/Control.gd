@@ -2,9 +2,12 @@ extends Control
 class_name GAME
 @onready var menu = $"../MenuLayer/Menu"
 @onready var end_screen = $"../MenuLayer/EndScreen"
+@onready var game_theme = $"../GameTheme"
+@onready var menu_theme = $"../MenuTheme"
+@onready var end_theme = $"../EndTheme"
 signal end_game(score)
 var resources: Resource_container = Resource_container.new()
-@export var available_cultists = 0
+@export var available_cultists = 10
 var peak_magic = 1000
 var cultists_in_ritual = 10
 var cultists_in_recruitment = 0
@@ -49,6 +52,27 @@ func pauseMenu():
 		menu.show()
 
 func retry():
+	print("retry works")
+	global_timer = 0
+	resources.set_re(Resources.r.CULTISTS, 20)
+	resources.set_re(Resources.r.MAGIC, 1000)
+	resources.set_re(Resources.r.LOYALTY, 100)
+	resources.set_re(Resources.r.PRISONERS, 0)
+	resources.set_re(Resources.r.GOLD, 10000)
+	#Engine.time_scale = 1
+	peak_magic = 1000
+	cultists_in_ritual = 10
+	cultists_in_recruitment = 0
+	cultists_in_job = 0
+	new_cultist_counter = 0
+	available_cultists = 10
+	is_paused = false
+	in_intro = false
+	$Cultist_Send.value = cultists_in_ritual
+	$Recruitment_Send.value = cultists_in_recruitment
+	$Job_Send.value = cultists_in_job
+	end_screen.hide()
+	Engine.time_scale = 1
 	pass
 
 # Called when the node enters the scene tree for the first time.
@@ -103,6 +127,7 @@ func _process(delta):
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
 	global_timer += delta
 	if (global_timer >= 2):
+		is_paused = true
 		Engine.time_scale = 0
 		end_game.emit(resources.get_re(Resources.r.MAGIC))
 		#end_screen.set_score("Final score: " + str(Resources.r.MAGIC))
@@ -129,8 +154,10 @@ func _process(delta):
 	if (new_cultist_counter >= 300):
 		new_cultist_counter = 0
 		resources.add_re(Resources.r.CULTISTS, 1)
-	if (int(resources.get_re(Resources.r.MAGIC)) == 0):
-		print("Dead you are, try again you must.")
+	if (resources.get_re(Resources.r.MAGIC) < 1):
+		is_paused = true
+		Engine.time_scale = 0
+		end_game.emit(resources.get_re(Resources.r.MAGIC))
 	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
 	$magic_label.text = "Magic: " + str(int(resources.get_re(Resources.r.MAGIC)))
 	$loyalty_bar.value = resources.get_re(Resources.r.LOYALTY)
