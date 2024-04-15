@@ -40,9 +40,18 @@ func _ready():
 func _process(delta):
 	pass
 
+<<<<<<< HEAD
 #func _on_s_key_pressed():
 	#self.hide()
 	#pass
+=======
+func _on_s_key_pressed():
+	get_parent().get_node("UI").is_paused = false
+	get_parent().get_node("UI").in_intro = false
+	Engine.time_scale = 1
+	self.hide()
+	pass
+>>>>>>> main
 
 #func load_file(file_paths):
 	#var file
@@ -95,5 +104,6 @@ func _on_button_pressed():
 func _on_skip_button_pressed():
 	get_parent().get_node("UI").is_paused = false
 	get_parent().get_node("UI").in_intro = false
+	Engine.time_scale = 1
 	self.hide()
 	pass

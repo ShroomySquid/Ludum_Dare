@@ -37,10 +37,6 @@ func _cultists_in_job(value: float):
 	$Job_Send.value = cultists_in_job
 
 func pauseMenu():
-	if in_intro:
-		is_paused = true
-		Engine.time_scale = 0
-		pass
 	if is_paused:
 		is_paused = false
 		Engine.time_scale = 1
@@ -65,6 +61,7 @@ func _ready():
 	$Recruitment_Send.value_changed.connect(self._cultists_in_recruitment)
 	$Job_Send.value = cultists_in_job
 	$Job_Send.value_changed.connect(self._cultists_in_job)
+	Engine.time_scale = 0
 
 func _endTuto():
 	is_paused = false

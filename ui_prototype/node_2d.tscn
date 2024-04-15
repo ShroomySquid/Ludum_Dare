@@ -56,10 +56,7 @@ offset_right = 1723.0
 offset_bottom = 105.0
 
 [node name="Menu" parent="." instance=ExtResource("4_dhysq")]
-offset_left = 1000.0
-offset_top = 444.0
-offset_right = 1000.0
-offset_bottom = 444.0
+scale = Vector2(1, 1)
 
 [node name="Event_manager" type="Control" parent="."]
 layout_mode = 3

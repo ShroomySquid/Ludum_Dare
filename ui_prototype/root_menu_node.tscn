@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bttiw6qjxoywv"]
 
-[ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
+[ext_resource type="PackedScene" uid="uid://b64k0dhbslb86" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://name_page.gd" id="3_7ksfk"]
 [ext_resource type="Script" path="res://LineEdit.gd" id="4_6dy8q"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="4_aeki8"]
@@ -261,6 +261,8 @@ offset_top = 540.0
 offset_right = 1153.0
 offset_bottom = 556.0
 scale = Vector2(2.88, 3.1104)
+min_value = -80.0
+max_value = 12.0
 
 [node name="music_slider" type="HSlider" parent="settings"]
 layout_mode = 0
@@ -293,4 +295,5 @@ script = ExtResource("6_eikeb")
 [connection signal="text_submitted" from="name_page/LineEdit" to="name_page/LineEdit" method="_on_text_submitted"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
+[connection signal="value_changed" from="settings/master_slider" to="audio_manager" method="_on_master_slider_value_changed"]
 [connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]
