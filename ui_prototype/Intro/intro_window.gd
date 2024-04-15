@@ -39,7 +39,7 @@ func _ready():
 			#print("Error opening file:", file_paths[i])
 	#else:
 		#print("File not found:", file_paths[i])
-	var label_node = get_node("text")
+	var label_node = get_node("intro_label")
 	if label_node != null:
 		label_node.text = intro_first + texts[0]
 	pass
