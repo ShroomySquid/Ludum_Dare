@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cqg8o57sy02um"]
+[gd_scene load_steps=31 format=3 uid="uid://cqg8o57sy02um"]
 
 [ext_resource type="PackedScene" uid="uid://b64k0dhbslb86" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://root_menu_node.gd" id="1_wq6na"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="19_njy2c"]
 [ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="20_s5itj"]
 [ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="21_whkf7"]
+[ext_resource type="Script" path="res://archons_sounds.gd" id="28_pbag5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ika5"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -44,6 +45,10 @@ grow_vertical = 2
 script = ExtResource("1_wq6na")
 
 [node name="audio_manager" parent="." instance=ExtResource("1_scxvw")]
+
+[node name="archons_sounds" type="AudioStreamPlayer" parent="."]
+volume_db = 12.0
+script = ExtResource("28_pbag5")
 
 [node name="Untitled Cult Game" type="Node2D" parent="."]
 visible = false
@@ -350,7 +355,7 @@ offset_right = 1153.0
 offset_bottom = 556.0
 scale = Vector2(2.88, 3.1104)
 min_value = -80.0
-max_value = 12.0
+max_value = 24.0
 
 [node name="music_slider" type="HSlider" parent="settings"]
 layout_mode = 0
