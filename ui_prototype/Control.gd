@@ -66,6 +66,14 @@ func _endTuto():
 	is_paused = false
 	print("ok")
 
+func magic_gen(delta):
+	var m = resources.get_re(Resources.r.MAGIC)
+	var d = (m - cultists_in_ritual * 100)
+	if d <= -1000:
+		resources.sub_re(Resources.r.MAGIC, (d + 1000) * delta / 20)
+	elif d > 0:
+		resources.sub_re(Resources.r.MAGIC, d * delta / 20)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
@@ -105,7 +113,8 @@ func _process(delta):
 			print("you had to try to be this bad")
 		elif (resources.get_re(Resources.r.MAGIC) >= 1):
 			print("how")
-	resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta)
+	#resources.sub_re(Resources.r.MAGIC, (resources.get_re(Resources.r.MAGIC) - cultists_in_ritual * 100) * delta / 20)
+	magic_gen(delta)
 	new_cultist_counter += cultists_in_recruitment * delta
 	if (new_cultist_counter >= 300):
 		new_cultist_counter = 0

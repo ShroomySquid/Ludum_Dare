@@ -15,10 +15,7 @@ var event_pool = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(10):
-		event_pool.append(Event_container.new(2, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])]))
-		event_pool[i].set_event_text("This is event_" + str(i))
-		event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
+	generate_pool()
 	#event_0.set_event_text("This is event_0")
 	#event_1.set_event_text("This is event_1")
 	#event_2.set_event_text("This is event_2")
@@ -27,6 +24,13 @@ func _ready():
 		print(str(i))
 	pass
 
+
+func generate_pool():
+	for i in range(10):
+		event_pool.append(Event_container.new(2, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])]))
+		event_pool[i].set_event_text("This is event_" + str(i))
+		event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
+	print("Pool refreshed")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,11 +52,7 @@ func _process(delta):
 			return
 		if randi_range(1, 100) < event_chance:
 			if event_pool.size() == 0:
-				for i in range(10):
-					event_pool.append(Event_container.new(2, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])]))
-					event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
-					event_pool[i].set_event_text("This is event_" + str(i))
-					print("event_pool refreshed")
+				generate_pool()
 			var e = randi_range(0, event_pool.size() - 1)
 			popups[guy].load_event(event_pool[e])
 			ongoing_event[guy] = event_pool[e]
