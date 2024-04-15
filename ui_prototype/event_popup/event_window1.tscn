@@ -14,7 +14,6 @@ position = Vector2i(300, 400)
 size = Vector2i(600, 300)
 unresizable = true
 always_on_top = true
-theme_override_colors/title_color = Color(0.145098, 0.0313726, 0.156863, 1)
 theme_override_fonts/title_font = ExtResource("2_xx7rv")
 script = ExtResource("1_mxji7")
 
