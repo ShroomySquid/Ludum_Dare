@@ -110,7 +110,7 @@ script = ExtResource("14_57b7e")
 [node name="event_window1" type="Window" parent="Untitled Cult Game"]
 title = "NEW EVENT"
 initial_position = 1
-size = Vector2i(900, 300)
+size = Vector2i(900, 100)
 unresizable = true
 theme_override_fonts/title_font = ExtResource("4_aeki8")
 script = ExtResource("10_0hocx")

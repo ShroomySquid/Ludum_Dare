@@ -220,8 +220,6 @@ func update_timer(delta):
 func _process(delta):
 	var settings_page = $"../../settings"
 	update_labels()
-	#if (!game_theme.playing):
-	#	game_theme.play()
 	if (Input.is_action_just_pressed("pause") && in_intro == false):
 		settings_page.hide()
 		pauseMenu()
@@ -232,8 +230,11 @@ func _process(delta):
 	update_timer(delta)
 	magic_gen(delta)
 	update_timer(delta)
-	if (int(resources.get_re(Resources.r.MAGIC)) == 0):
-		print("Dead you are, try again you must.")
+	if (resources.get_re(Resources.r.MAGIC) < 1):
+		is_paused = true
+		Engine.time_scale = 0
+		end_game.emit(resources.get_re(Resources.r.MAGIC))
+		end_screen.show()
 	get_parent().get_node("View").get_node("background").hide()
 	get_parent().get_node("View").get_node("background2").hide()
 	get_parent().get_node("View").get_node("background2").hide()

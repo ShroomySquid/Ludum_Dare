@@ -43,7 +43,7 @@ func _ready():
 	if label_node != null:
 		label_node.text = intro_first + texts[0]
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every -frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
