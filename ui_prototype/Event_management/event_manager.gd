@@ -5,16 +5,13 @@ extends Control
 var ongoing_event = [Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new()]
 var cost_modifier = Resource_container.new([100, 100, 100, 100, 100, 100])
 var ritual_master_events = []
-
+var great_inquistor_events = []
+var great_chaplain_events = []
+var psychopriest_events = []
+var librarian_events = []
 
 var event_chance = 100
 var t = 0
-
-#var event_0: Event_container = Event_container.new(0, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])])
-#var event_1: Event_container = Event_container.new(1, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])])
-#var event_2: Event_container = Event_container.new(2, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([-2, -10, 0, 0, 0, 0])])
-
-#var event_pool = [event_0, event_1, event_2]
 var event_pool = []
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +20,7 @@ func _ready():
 	#event_0.set_event_text("This is event_0")
 	#event_1.set_event_text("This is event_1")
 	#event_2.set_event_text("This is event_2")
-	var file = FileAccess.open("res://jsons/ritual_master.json", FileAccess.READ)
+	var file = FileAccess.open("res://json_folder/ritual_master.json", FileAccess.READ)
 	var s = file.get_as_text()
 	var json = JSON.new()
 	json.parse(s)
@@ -31,6 +28,38 @@ func _ready():
 	for i in holder:
 		ritual_master_events.append(Event_container.from_dict(i))
 		print("success")
+	file = FileAccess.open("res://json_folder/grand_inquisitor.json", FileAccess.READ)
+	s = file.get_as_text()
+	json.parse(s)
+	holder = json.data
+	for i in holder:
+		great_inquistor_events.append(Event_container.from_dict(i))
+		print("success")
+	file.close()
+	file = FileAccess.open("res://json_folder/great-chaplin.json", FileAccess.READ)
+	s = file.get_as_text()
+	json.parse(s)
+	holder = json.data
+	for i in holder:
+		great_chaplain_events.append(Event_container.from_dict(i))
+		print("success")
+	file.close()
+	file = FileAccess.open("res://json_folder/ritual_master_2.json", FileAccess.READ)
+	s = file.get_as_text()
+	json.parse(s)
+	holder = json.data
+	for i in holder:
+		psychopriest_events.append(Event_container.from_dict(i))
+		print("success")
+	file.close()
+	file = FileAccess.open("res://json_folder/librarian.json", FileAccess.READ)
+	s = file.get_as_text()
+	json.parse(s)
+	holder = json.data
+	for i in holder:
+		librarian_events.append(Event_container.from_dict(i))
+		print("success")
+	file.close()
 	for i in range(5):
 		popups[i].hide()
 		print(str(i))
@@ -109,17 +138,39 @@ func _process(delta):
 			ritual_master_events.pop_at(e)
 			popups[0].show()
 			t = 0
-		elif randi_range(1, 100) < event_chance:
-			if event_pool.is_empty():
-				generate_pool()
-			var e = randi_range(0, event_pool.size() - 1)
-			event_pool[e].exclusive = guy
-			popups[guy].load_event(event_pool[e])
-			ongoing_event[guy] = event_pool[e]
-			event_pool.pop_at(e)
-			popups[guy].show()
 			archons_audio.play_sound(guy)
+		if guy == 1 && great_inquistor_events.size() != 0:
+			var e = randi_range(1, great_inquistor_events.size() - 1)
+			popups[1].load_event(great_inquistor_events[e])
+			ongoing_event[1] = great_inquistor_events[e]
+			great_inquistor_events.pop_at(e)
+			popups[1].show()
 			t = 0
+			archons_audio.play_sound(guy)
+		if guy == 2 && great_chaplain_events.size() != 0:
+			var e = randi_range(1, great_chaplain_events.size() - 1)
+			popups[2].load_event(great_chaplain_events[e])
+			ongoing_event[2] = great_chaplain_events[e]
+			great_chaplain_events.pop_at(e)
+			popups[2].show()
+			t = 0
+			archons_audio.play_sound(guy)
+		if guy == 3 && psychopriest_events.size() != 0:
+			var e = randi_range(1, psychopriest_events.size() - 1)
+			popups[3].load_event(psychopriest_events[e])
+			ongoing_event[3] = psychopriest_events[e]
+			psychopriest_events.pop_at(e)
+			popups[3].show()
+			t = 0
+			archons_audio.play_sound(guy)
+		if guy == 4 && librarian_events.size() != 0:
+			var e = randi_range(1, librarian_events.size() - 1)
+			popups[4].load_event(librarian_events[e])
+			ongoing_event[4] = librarian_events[e]
+			librarian_events.pop_at(e)
+			popups[4].show()
+			t = 0
+			archons_audio.play_sound(guy)
  
 
 
