@@ -57,7 +57,7 @@ func _process(delta):
 				print("event " + str(i) + " resolved (" + ongoing_event[i].event_text + ")")
 			else:
 				print("event " + str(i) + " failed (" + ongoing_event[i].event_text + ")")
-			$"../Conclusion_window".add_event(ongoing_event[i])
+			get_parent().get_node("Conclusion_window").add_event(ongoing_event[i])
 			ongoing_event[i] = Event_container.new()
 	if t > 1:
 		t -= 1
