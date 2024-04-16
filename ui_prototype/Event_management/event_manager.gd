@@ -1,8 +1,10 @@
 extends Control
 
+@onready var archons_audio = $"../../archons_sounds"
 @onready var popups = [$"../event_pop_up", $"../event_pop_up2", $"../event_pop_up3", $"../event_pop_up4", $"../event_pop_up5"]
 var ongoing_event = [Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new()]
 var cost_modifier = Resource_container.new([100, 100, 100, 100, 100, 100])
+
 
 var event_chance = 100
 var t = 0
@@ -87,6 +89,7 @@ func _process(delta):
 			ongoing_event[guy] = event_pool[e]
 			event_pool.pop_at(e)
 			popups[guy].show()
+			archons_audio.play_sound(guy)
 			t = 0
  
 

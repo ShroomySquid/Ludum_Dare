@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://diejjpsf5s6pd"]
+[gd_scene load_steps=5 format=3 uid="uid://diejjpsf5s6pd"]
 
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_yrw7t"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_vdmhv"]
 [ext_resource type="Theme" uid="uid://sbmqosn2acr2" path="res://Menu/button_theme.tres" id="2_vpp4j"]
+[ext_resource type="Script" path="res://Menu/Settings_button.gd" id="4_qg2ss"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -52,6 +53,19 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
+[node name="Settings_button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_vpp4j")
+theme_override_fonts/font = ExtResource("2_vdmhv")
+theme_override_font_sizes/font_size = 200
+text = "Settings"
+script = ExtResource("4_qg2ss")
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_vpp4j")
@@ -60,4 +74,5 @@ theme_override_font_sizes/font_size = 200
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings_button" to="MarginContainer/VBoxContainer/Settings_button" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
