@@ -421,19 +421,6 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="to_delete" type="VBoxContainer" parent="TitleScreen/buttons_container"]
-layout_mode = 2
-theme_override_constants/separation = 100
-
-[node name="Separator" type="Control" parent="TitleScreen/buttons_container/to_delete"]
-layout_mode = 2
-
-[node name="Logotodelete" type="Label" parent="TitleScreen/buttons_container/to_delete"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 140
-text = "TITLE GOES HERE"
-horizontal_alignment = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/buttons_container"]
 layout_mode = 2
 alignment = 1
