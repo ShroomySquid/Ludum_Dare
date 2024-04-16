@@ -9,6 +9,7 @@ var great_inquistor_events = []
 var great_chaplain_events = []
 var psychopriest_events = []
 var librarian_events = []
+var first = false
 
 var event_chance = 100
 var t = 0
@@ -107,8 +108,9 @@ func _process(delta):
 			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].event_id == 6 && ongoing_event[i].choice == 2:
 				$"../UI".targaret_matcher_flag = true
 			ongoing_event[i] = Event_container.new()
-	if t > 10:
+	if t > 10 || !first:
 		t -= 10
+		first = true
 		var guy = randi_range(0, 4)
 		if !ongoing_event[guy].is_placeholder:
 			return

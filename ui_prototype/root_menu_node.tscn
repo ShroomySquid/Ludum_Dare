@@ -154,10 +154,10 @@ offset_left = -600.0
 offset_bottom = 500.0
 grow_horizontal = 0
 theme = SubResource("Theme_lswx8")
-theme_override_colors/font_color = Color(0.156863, 0.0431373, 0.0196078, 1)
-theme_override_colors/font_shadow_color = Color(0.741176, 0, 0.615686, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 20
 text = "You have decided to give your soul to me, so give up already.
 This is a big pile of text that makes no sense, so please stop reading
 it."

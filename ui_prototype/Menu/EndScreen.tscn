@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs1jrvrr5sgde"]
+[gd_scene load_steps=9 format=3 uid="uid://cs1jrvrr5sgde"]
 
 [ext_resource type="Script" path="res://Menu/EndScreen.gd" id="1_mrpen"]
 [ext_resource type="Texture2D" uid="uid://t2ht3jd5i540" path="res://png/MENU_PRINCIPAL.png" id="2_6fmvs"]
 [ext_resource type="Theme" uid="uid://sbmqosn2acr2" path="res://Menu/button_theme.tres" id="2_mna8s"]
+[ext_resource type="Texture2D" uid="uid://rrsu04wcohvy" path="res://png/ELDRITCH_BOSS_LVL_3.png" id="3_coy7j"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="3_esequ"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fky3"]
@@ -31,12 +32,21 @@ position = Vector2(1795.59, 1051.47)
 scale = Vector2(2.66971, 2.2804)
 texture = ExtResource("2_6fmvs")
 
+[node name="monster" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1810.3, 1044.12)
+scale = Vector2(0.489085, 0.550267)
+texture = ExtResource("3_coy7j")
+
 [node name="FinalScore" type="Label" parent="."]
 layout_mode = 0
 offset_left = 450.001
 offset_top = 392.646
 offset_right = 1306.0
 offset_bottom = 597.646
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("3_esequ")
 theme_override_font_sizes/font_size = 150
 text = "Final score: 
@@ -76,6 +86,9 @@ offset_left = 457.354
 offset_top = 942.646
 offset_right = 822.354
 offset_bottom = 1355.65
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("3_esequ")
 theme_override_font_sizes/font_size = 150
 text = "Bye
