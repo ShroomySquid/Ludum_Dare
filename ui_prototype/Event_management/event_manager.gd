@@ -1,7 +1,7 @@
 extends Control
 
 @onready var archons_audio = $"../../archons_sounds"
-@onready var popups = [$"../event_pop_up", $"../event_pop_up2", $"../event_pop_up3", $"../event_pop_up4", $"../event_pop_up5"]
+@onready var popups = [$"../event_pop_up", $"../event_pop_up5", $"../event_pop_up4", $"../event_pop_up2", $"../event_pop_up3"]
 var ongoing_event = [Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new()]
 var cost_modifier = Resource_container.new([100, 100, 100, 100, 100, 100])
 var ritual_master_events = []
@@ -16,7 +16,6 @@ var event_pool = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_pool()
 	#event_0.set_event_text("This is event_0")
 	#event_1.set_event_text("This is event_1")
 	#event_2.set_event_text("This is event_2")
@@ -71,24 +70,6 @@ func apply_cost_modifier(e: Event_container):
 	e.cost_2.scale(cost_modifier)
 	e.cost_3.scale(cost_modifier)
 
-func generate_pool():
-	for i in range(10):
-		event_pool.append(Event_container.new(i, [Resource_container.new([-5, -100, 0, 0, 0, 0]), Resource_container.new([0, -300, 0, 0, 0, 0]), Resource_container.new([0, 0, 0, 0, 0, 0])]))
-		event_pool[i].set_event_text("This is event_" + str(i))
-		event_pool[i].reward = Resource_container.new([10, 1000, 0, 0, 0, 0])
-		event_pool[i].r_1 = Resource_container.new([10, 1000, 0, 0, 0, 0])
-		event_pool[i].r_2 = Resource_container.new([10, 1000, 0, 0, 0, 0])
-		event_pool[i].t_1 = 5
-		event_pool[i].t_2 = 5
-		event_pool[i].t_3 = 0
-		print(JSON.stringify(event_pool[i].my_dict()))
-	var s = JSON.stringify(Event_container.new(0, [Resource_container.new([0, 0, 0, 0, 0, 0]), Resource_container.new([0, 0, 0, 0, 0, 0]), Resource_container.new([0, 0, 0, 0, 0, 0])]).my_dict())
-	var json = JSON.new()
-	json.parse(s)
-	event_pool[0] = Event_container.from_dict(json.data)
-	print(JSON.stringify(event_pool[0].my_dict()))
-	print("Pool refreshed")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	t += delta
@@ -126,8 +107,8 @@ func _process(delta):
 			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].event_id == 6 && ongoing_event[i].choice == 2:
 				$"../UI".targaret_matcher_flag = true
 			ongoing_event[i] = Event_container.new()
-	if t > 1:
-		t -= 1
+	if t > 10:
+		t -= 10
 		var guy = randi_range(0, 4)
 		if !ongoing_event[guy].is_placeholder:
 			return
