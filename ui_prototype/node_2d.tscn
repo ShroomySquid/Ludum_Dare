@@ -58,19 +58,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_s0rid")
 
+[node name="Conclusion_window" parent="Event_manager" instance=ExtResource("12_yf3lf")]
+
 [node name="event_window1" parent="." instance=ExtResource("4_t7hkk")]
 initial_position = 1
-visible = false
 always_on_top = false
 
 [node name="intro_window" parent="." instance=ExtResource("7_cd71p")]
 initial_position = 1
-visible = false
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource("4_dhysq")]
-visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -81,7 +80,6 @@ grow_vertical = 1
 scale = Vector2(1, 1)
 
 [node name="EndScreen" parent="MenuLayer" instance=ExtResource("9_57u53")]
-visible = false
 offset_left = 138.0
 offset_top = -18.0
 offset_right = 2495.0
@@ -95,8 +93,6 @@ stream = ExtResource("11_i12wa")
 
 [node name="EndTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3mmgi")
-
-[node name="Conclusion_window" parent="." instance=ExtResource("12_yf3lf")]
 
 [connection signal="end_game" from="UI" to="MenuLayer/EndScreen" method="_on_ui_end_game"]
 [connection signal="bubble_signal" from="event_pop_up" to="UI" method="_on_event_pop_up_bubble_signal"]

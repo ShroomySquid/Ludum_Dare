@@ -3,6 +3,7 @@ extends Control
 @onready var popups = [$"../event_pop_up", $"../event_pop_up2", $"../event_pop_up3", $"../event_pop_up4", $"../event_pop_up5"]
 var ongoing_event = [Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new()]
 var cost_modifier = Resource_container.new([100, 100, 100, 100, 100, 100])
+var ritual_master_events = []
 
 var event_chance = 100
 var t = 0
@@ -20,6 +21,14 @@ func _ready():
 	#event_0.set_event_text("This is event_0")
 	#event_1.set_event_text("This is event_1")
 	#event_2.set_event_text("This is event_2")
+	var file = FileAccess.open("res://jsons/ritual_master.json", FileAccess.READ)
+	var s = file.get_as_text()
+	var json = JSON.new()
+	json.parse(s)
+	var holder = json.data
+	for i in holder:
+		ritual_master_events.append(Event_container.from_dict(i))
+		print("success")
 	for i in range(5):
 		popups[i].hide()
 		print(str(i))
@@ -57,12 +66,13 @@ func _process(delta):
 			continue
 		if ongoing_event[i].is_active:
 			ongoing_event[i].timer -= delta
-		if ongoing_event[i].timer <= 0:
+		if ongoing_event[i].timer <= 0 && ongoing_event[i].is_active:
 			if Resource_container.compare($"../UI".resources, ongoing_event[i].reward):
 				$"../UI".resources = Resource_container.combine($"../UI".resources, ongoing_event[i].reward)
 				print("event " + str(i) + " resolved (" + ongoing_event[i].event_text + ")")
 			else:
 				print("event " + str(i) + " failed (" + ongoing_event[i].event_text + ")")
+			print("I'm a dumbass")
 			$"../Conclusion_window".add_event(ongoing_event[i])
 			if ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 2:
 				cost_modifier.set_re(Resources.r.MAGIC, 75)
@@ -71,14 +81,33 @@ func _process(delta):
 			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 1:
 				$"../UI".living_costs *= 0.5
 			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 2:
-				pass
+				$"../UI".static_resources.add_re(Resources.r.MAGIC, 1)
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 3:
+				$"../UI".daily_income = Resource_container.combine($"../UI".daily_income, Resource_container.new([0, 0, 5, 0, 0, 0]))
+			elif ongoing_event[i].exclusive == 3 && ongoing_event[i].id == 4 && ongoing_event[i].choice == 1:
+				$"../UI".insurance_flag = true
+			elif ongoing_event[i].exclusive == 1 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 2:
+				$"../UI".static_resources.add_re(Resources.r.CULTISTS, 2/10)
+				$"../UI".static_resources.add_re(Resources.r.GOLD, 1000/10)
+				$"../UI".static_resources.add_re(Resources.r.MAGIC, 500/10)
+			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].id == 6 && ongoing_event[i].choice == 1:
+				$"../UI".gill_bates_flag = true
+			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].id == 6 && ongoing_event[i].choice == 2:
+				$"../UI".targaret_matcher_flag = true
 			ongoing_event[i] = Event_container.new()
 	if t > 1:
 		t -= 1
 		var guy = randi_range(0, 4)
 		if !ongoing_event[guy].is_placeholder:
 			return
-		if randi_range(1, 100) < event_chance:
+		if guy == 0 && ritual_master_events.size() != 0:
+			var e = randi_range(1, ritual_master_events.size() - 1)
+			popups[0].load_event(ritual_master_events[e])
+			ongoing_event[0] = ritual_master_events[e]
+			ritual_master_events.pop_at(e)
+			popups[0].show()
+			t = 0
+		elif randi_range(1, 100) < event_chance:
 			if event_pool.is_empty():
 				generate_pool()
 			var e = randi_range(0, event_pool.size() - 1)

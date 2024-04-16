@@ -19,9 +19,12 @@ var in_intro = true
 var starve_timer = 1
 var magic_modifier = 1
 var living_cost = 1
-var static_magic = 0
+var gill_bates_flag = false
+var targaret_matcher_falg = false
 var daily_income = Resource_container.new()
+var static_resources = Resource_container.new()
 var day = 0
+var insurance_flag = false
 
 func _cultists_in_ritual(value: float):
 	if (is_paused == true):
@@ -63,10 +66,13 @@ func retry():
 	print("retry works")
 	magic_modifier = 1
 	living_cost = 1
-	static_magic = 0
 	daily_income = Resource_container.new()
+	static_resources = Resource_container.new()
 	day = 0
 	global_timer = 0
+	insurance_flag = false
+	gill_bates_flag = false
+	targaret_matcher_falg = false
 	resources.set_re(Resources.r.CULTISTS, 20)
 	resources.set_re(Resources.r.MAGIC, 1000)
 	resources.set_re(Resources.r.LOYALTY, 100)
@@ -115,7 +121,8 @@ func magic_gen(delta):
 		resources.sub_re(Resources.r.MAGIC, (d + 1000 / magic_modifier) * delta / 20)
 	elif d > 0:
 		resources.sub_re(Resources.r.MAGIC, d * delta / (20 / magic_modifier))
-	resources.add_re(Resources.r.MAGIC, delta * static_magic)
+	if targaret_matcher_falg:
+		resources.add_re(Resources.r.MAGIC, (cultists_in_job / 10) * delta)
 
 func update_labels():
 	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
@@ -173,6 +180,10 @@ func update_gold(delta):
 			resources.sub_re(Resources.r.CULTISTS, 1)
 			resources.sub_re(Resources.r.LOYALTY, 5)
 		starve_timer = 1
+		if insurance_flag:
+			resources.add_re(Resources.r.GOLD, 500)
+	if gill_bates_flag:
+		resources.add_re(Resources.r.GOLD, resources.get_re(Resources.r.GOLD) * 0.05)
 
 func update_cultists(delta):
 	available_cultists = resources.get_re(Resources.r.CULTISTS) - cultists_in_ritual - cultists_in_recruitment - cultists_in_job
@@ -196,6 +207,7 @@ func update_cultists(delta):
 
 func update_timer(delta):
 	global_timer += delta
+	resources = Resource_container.combine(resources, static_resources.per_delta(delta))
 	if (global_timer >= 900):
 		is_paused = true
 		Engine.time_scale = 0

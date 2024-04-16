@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cqg8o57sy02um"]
+[gd_scene load_steps=29 format=3 uid="uid://cqg8o57sy02um"]
 
 [ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://root_menu_node.gd" id="1_wq6na"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="15_wjeam"]
 [ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="16_skrke"]
 [ext_resource type="PackedScene" uid="uid://diejjpsf5s6pd" path="res://Menu/menu.tscn" id="17_d177q"]
+[ext_resource type="PackedScene" uid="uid://bq5mnfnj6wl7q" path="res://event_popup/conclusion_window.tscn" id="17_xmun7"]
 [ext_resource type="PackedScene" path="res://Menu/EndScreen.tscn" id="18_wpg3x"]
 [ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="19_njy2c"]
 [ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="20_s5itj"]
@@ -125,6 +126,8 @@ stream = ExtResource("20_s5itj")
 
 [node name="EndTheme" type="AudioStreamPlayer" parent="Untitled Cult Game"]
 stream = ExtResource("21_whkf7")
+
+[node name="Conclusion_window" parent="Untitled Cult Game" instance=ExtResource("17_xmun7")]
 
 [node name="name_page" type="Control" parent="."]
 layout_mode = 1
