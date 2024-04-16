@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="10_sibtu"]
 [ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="11_i12wa"]
 [ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="12_3mmgi"]
-[ext_resource type="PackedScene" uid="uid://bq5mnfnj6wl7q" path="res://event_popup/conclusion_window.tscn" id="12_yf3lf"]
+[ext_resource type="PackedScene" path="res://event_popup/conclusion_window.tscn" id="12_yf3lf"]
 
 [node name="Untitled Cult Game" type="Node2D"]
 

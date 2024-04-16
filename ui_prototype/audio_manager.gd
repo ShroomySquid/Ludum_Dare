@@ -16,3 +16,7 @@ func _on_master_slider_value_changed(value):
 func _on_line_edit_game_start():
 	intro_music_is_stoped = true
 	self.stop()
+
+
+func _on_music_slider_value_changed(value):
+	self.volume_db = value

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://event_popup/event_button1.gd" id="1_5mu0g"]
 [ext_resource type="Script" path="res://event_popup/event_window1.gd" id="1_mxji7"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_xx7rv"]
-[ext_resource type="Texture2D" uid="uid://c7hwdlp703dvo" path="res://png/lieutenant1_protrait.png" id="3_if23m"]
+[ext_resource type="Texture2D" uid="uid://d2lsopx1tj5r4" path="res://png/lieutenant1_portrait.png" id="3_wenjf"]
 [ext_resource type="Texture2D" uid="uid://yugm6tmjqkho" path="res://png/lieutenant2_portrait.png" id="4_0u3hb"]
 [ext_resource type="Script" path="res://event_popup/event_button2.gd" id="4_bigwu"]
 [ext_resource type="Script" path="res://event_popup/event_button3.gd" id="5_dx7kw"]
@@ -22,8 +22,41 @@ always_on_top = true
 theme_override_fonts/title_font = ExtResource("2_xx7rv")
 script = ExtResource("1_mxji7")
 
+[node name="lieutenant1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(154, 164)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_wenjf")
+
+[node name="lieutenant2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(254, 151)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_0u3hb")
+
+[node name="lieutenant3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(175, 160)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_g7mmc")
+
+[node name="lieutenant4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(139, 156)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_7u5jp")
+
+[node name="lieutenant5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(175, 146)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_xlsae")
+
 [node name="event_text" type="Label" parent="."]
 custom_minimum_size = Vector2(800, 500)
+offset_left = 400.0
+offset_right = 1200.0
+offset_bottom = 500.0
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -42,32 +75,50 @@ autowrap_mode = 2
 justification_flags = 0
 
 [node name="lieutenant1" type="Sprite2D" parent="."]
-position = Vector2(305, 135)
-scale = Vector2(0.24, 0.24)
-texture = ExtResource("3_if23m")
+visible = false
+position = Vector2(154, 164)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_wenjf")
 
 [node name="lieutenant2" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(150, 175)
-scale = Vector2(1.25, 1.25)
+position = Vector2(254, 151)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_0u3hb")
 
 [node name="lieutenant3" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(175, 150)
-scale = Vector2(1.25, 1.25)
+position = Vector2(175, 160)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_g7mmc")
 
 [node name="lieutenant4" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(134, 156)
+position = Vector2(139, 156)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_7u5jp")
 
 [node name="lieutenant5" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(175, 170)
+position = Vector2(175, 146)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_xlsae")
+
+[node name="event_text" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 500)
+offset_left = 400.0
+offset_right = 1200.0
+offset_bottom = 500.0
+theme = SubResource("Theme_lswx8")
+theme_override_colors/font_color = Color(0.156863, 0.0431373, 0.0196078, 1)
+theme_override_colors/font_shadow_color = Color(0.741176, 0, 0.615686, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xx7rv")
+text = "You have decided to give your soul to me, so give up already.
+This is a big pile of text that makes no sense, so please stop reading
+it."
+autowrap_mode = 2
+justification_flags = 0
 
 [node name="event_button1" type="Button" parent="."]
 offset_left = 400.0

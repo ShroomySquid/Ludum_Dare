@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cqg8o57sy02um"]
+[gd_scene load_steps=31 format=3 uid="uid://cqg8o57sy02um"]
 
 [ext_resource type="PackedScene" path="res://audio_manager.tscn" id="1_scxvw"]
 [ext_resource type="Script" path="res://root_menu_node.gd" id="1_wq6na"]
@@ -14,9 +14,12 @@
 [ext_resource type="Script" path="res://Exit_button.gd" id="8_o3tkp"]
 [ext_resource type="Script" path="res://MenuLayer.gd" id="8_tupb5"]
 [ext_resource type="PackedScene" uid="uid://ci01t38757bvr" path="res://view.tscn" id="11_52ixn"]
+[ext_resource type="Script" path="res://Menu/menu.gd" id="11_8785v"]
 [ext_resource type="PackedScene" uid="uid://dqh3trwm4smod" path="res://ui.tscn" id="12_ia3re"]
+[ext_resource type="Theme" uid="uid://sbmqosn2acr2" path="res://Menu/button_theme.tres" id="12_updrm"]
 [ext_resource type="PackedScene" uid="uid://dtw641sruxwlq" path="res://event_popup/listener_bubble.tscn" id="13_qktal"]
 [ext_resource type="Script" path="res://GameTheme.gd" id="13_qq0s7"]
+[ext_resource type="Script" path="res://Menu/Settings_button.gd" id="14_2c7xr"]
 [ext_resource type="Script" path="res://Event_management/event_manager.gd" id="14_57b7e"]
 [ext_resource type="PackedScene" uid="uid://dtyp8htqy4fd2" path="res://event_popup/event_window1.tscn" id="15_wjeam"]
 [ext_resource type="PackedScene" uid="uid://cecoa35ps282h" path="res://Intro/intro_window.tscn" id="16_skrke"]
@@ -26,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://dl08vq3kla3lt" path="res://audio/Musique_Scène1.mp3" id="19_njy2c"]
 [ext_resource type="AudioStream" uid="uid://bvknnw5u58q7s" path="res://audio/Musique_MenuPrincipal.mp3" id="20_s5itj"]
 [ext_resource type="AudioStream" uid="uid://bdfbepk30a3cw" path="res://audio/Musique_Fin.mp3" id="21_whkf7"]
+[ext_resource type="Script" path="res://archons_sounds.gd" id="28_pbag5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ika5"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -43,6 +47,10 @@ grow_vertical = 2
 script = ExtResource("1_wq6na")
 
 [node name="audio_manager" parent="." instance=ExtResource("1_scxvw")]
+
+[node name="archons_sounds" type="AudioStreamPlayer" parent="."]
+volume_db = 12.0
+script = ExtResource("28_pbag5")
 
 [node name="Untitled Cult Game" type="Node2D" parent="."]
 visible = false
@@ -93,23 +101,81 @@ script = ExtResource("14_57b7e")
 
 [node name="event_window1" parent="Untitled Cult Game" instance=ExtResource("15_wjeam")]
 initial_position = 1
+visible = false
 always_on_top = false
 
 [node name="intro_window" parent="Untitled Cult Game" instance=ExtResource("16_skrke")]
 initial_position = 1
+visible = false
 
 [node name="MenuLayer" type="CanvasLayer" parent="Untitled Cult Game"]
+visible = false
 script = ExtResource("8_tupb5")
 
-[node name="Menu" parent="Untitled Cult Game/MenuLayer" instance=ExtResource("17_d177q")]
+[node name="Menu" type="Control" parent="Untitled Cult Game/MenuLayer"]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_right = 2560.0
 offset_bottom = 1440.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(1, 1)
+script = ExtResource("11_8785v")
+
+[node name="ColorRect" type="ColorRect" parent="Untitled Cult Game/MenuLayer/Menu"]
+layout_mode = 0
+offset_right = 2560.0
+offset_bottom = 1440.0
+color = Color(0, 0, 0, 0.501961)
+
+[node name="MarginContainer" type="MarginContainer" parent="Untitled Cult Game/MenuLayer/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -331.0
+offset_right = 500.0
+offset_bottom = 331.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Untitled Cult Game/MenuLayer/Menu/MarginContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Resume" type="Button" parent="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_updrm")
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 200
+text = "Resume"
+
+[node name="ColorRect" type="ColorRect" parent="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Settings_button" type="Button" parent="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_updrm")
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 200
+text = "Settings"
+script = ExtResource("14_2c7xr")
+
+[node name="ColorRect2" type="ColorRect" parent="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Quit" type="Button" parent="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_updrm")
+theme_override_fonts/font = ExtResource("4_aeki8")
+theme_override_font_sizes/font_size = 200
+text = "Quit"
 
 [node name="EndScreen" parent="Untitled Cult Game/MenuLayer" instance=ExtResource("18_wpg3x")]
 offset_left = 138.0
@@ -293,7 +359,7 @@ offset_right = 1153.0
 offset_bottom = 556.0
 scale = Vector2(2.88, 3.1104)
 min_value = -80.0
-max_value = 12.0
+max_value = 24.0
 
 [node name="music_slider" type="HSlider" parent="settings"]
 layout_mode = 0
@@ -302,6 +368,8 @@ offset_top = 715.0
 offset_right = 1153.0
 offset_bottom = 731.0
 scale = Vector2(2.88, 3.1104)
+min_value = -80.0
+max_value = 24.0
 
 [node name="sound_slider" type="HSlider" parent="settings"]
 layout_mode = 0
@@ -310,6 +378,9 @@ offset_top = 888.0
 offset_right = 1153.0
 offset_bottom = 904.0
 scale = Vector2(2.88, 3.1104)
+min_value = -80.0
+max_value = 24.0
+value = 12.0
 
 [node name="back_button" type="Button" parent="settings"]
 layout_mode = 0
@@ -434,6 +505,10 @@ script = ExtResource("8_o3tkp")
 [connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up5" to="Untitled Cult Game/UI" method="_on_event_pop_up_bubble_signal"]
 [connection signal="bubble_signal" from="Untitled Cult Game/event_pop_up5" to="Untitled Cult Game/event_window1" method="_on_event_pop_up_bubble_signal"]
 [connection signal="event_window_done" from="Untitled Cult Game/event_window1" to="Untitled Cult Game/Event_manager" method="_on_event_window_1_event_window_done"]
+[connection signal="pressed" from="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer/Resume" to="Untitled Cult Game/MenuLayer/Menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer/Settings_button" to="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer/Settings_button" method="_on_pressed"]
+[connection signal="pressed" from="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer/Settings_button" to="settings/back_button" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Untitled Cult Game/MenuLayer/Menu/MarginContainer/VBoxContainer/Quit" to="Untitled Cult Game/MenuLayer/Menu" method="_on_quit_pressed"]
 [connection signal="game_start" from="name_page/LineEdit" to="." method="_on_line_edit_game_start"]
 [connection signal="game_start" from="name_page/LineEdit" to="audio_manager" method="_on_line_edit_game_start"]
 [connection signal="game_start" from="name_page/LineEdit" to="Untitled Cult Game" method="_on_line_edit_game_start"]
@@ -443,6 +518,9 @@ script = ExtResource("8_o3tkp")
 [connection signal="text_submitted" from="name_page/LineEdit" to="name_page/LineEdit" method="_on_text_submitted"]
 [connection signal="pressed" from="name_page/back_button2" to="name_page/back_button2" method="_on_pressed"]
 [connection signal="value_changed" from="settings/master_slider" to="audio_manager" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="settings/music_slider" to="audio_manager" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="settings/music_slider" to="Untitled Cult Game/GameTheme" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="settings/sound_slider" to="archons_sounds" method="_on_sound_slider_value_changed"]
 [connection signal="pressed" from="settings/back_button" to="settings/back_button" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" to="TitleScreen/buttons_container/HBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]

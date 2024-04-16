@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bit81t6iu2ndk"
-path="res://.godot/imported/LIEUTENANT_5_GROS_PLAN.png-f285cef46cc1391c46914981cda67b34.ctex"
+uid="uid://d2lsopx1tj5r4"
+path="res://.godot/imported/lieutenant1_portrait.png-b0134789e03138316accb93e69f33074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://png/LIEUTENANT_5_GROS_PLAN.png"
-dest_files=["res://.godot/imported/LIEUTENANT_5_GROS_PLAN.png-f285cef46cc1391c46914981cda67b34.ctex"]
+source_file="res://png/lieutenant1_portrait.png"
+dest_files=["res://.godot/imported/lieutenant1_portrait.png-b0134789e03138316accb93e69f33074.ctex"]
 
 [params]
 
