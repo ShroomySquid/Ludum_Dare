@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 .DS_Store
+
+ui_prototype/export_presets.cfg
+
+*.exe
+
+ui_prototype/ui_prototype.pck
