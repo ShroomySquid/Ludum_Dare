@@ -19,8 +19,10 @@ func _on_ui_end_game(score):
 	$FinalScore.text = "Final score: " + str(int(score))
 	if (score >= 1000000):
 		$EndMsg.text = "Cori Tier"
+		$monster.show()
 	elif (score >= 100000):
 		$EndMsg.text = "Damn good"
+		$monster.show()
 	elif (score >= 10000):
 		$EndMsg.text = "It's alright"
 	elif (score >= 1000):

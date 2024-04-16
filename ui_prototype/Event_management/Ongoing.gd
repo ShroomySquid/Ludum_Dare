@@ -33,7 +33,7 @@ var modifier: int:
 		return modifier
 	set(value):
 		modifier = value
-var timer:
+var timer = 0:
 	get:
 		return timer
 var efficiency: int:
@@ -51,7 +51,7 @@ func my_dict():
 	return s
 
 static func from_dict(d:Dictionary):
-	var e = Event_container.new(d.get("id"), [Resource_container.new(d.get("cost_1")), Resource_container.new(d.get("cost_2")), Resource_container.new(d.get("cost_3"))], 1, d.get("timer"))
+	var e = Event_container.new(d.get("id"), [Resource_container.new(d.get("cost_1")), Resource_container.new(d.get("cost_2")), Resource_container.new(d.get("cost_3"))], 1)
 	e.set_event_text(d.get("event_text"))
 	e.r_1.basket = d.get("r_1")
 	e.r_2.basket = d.get("r_2")
@@ -65,7 +65,7 @@ static func from_dict(d:Dictionary):
 	e.exclusive = d.get("exclusive")
 	return e
 
-func _init(id:int=-1, r = [Resource_container.new(), Resource_container.new(), Resource_container.new()], m:int=1, t=5, e:int=100):
+func _init(id:int=-1, r = [Resource_container.new(), Resource_container.new(), Resource_container.new()], m:int=1, e:int=100):
 	event_id = id
 	if id > 0:
 		is_placeholder = false
@@ -82,7 +82,7 @@ func _init(id:int=-1, r = [Resource_container.new(), Resource_container.new(), R
 	t_2 = 0
 	t_3 = 0
 	modifier = m
-	timer = t
+	timer = 1
 	efficiency = e
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

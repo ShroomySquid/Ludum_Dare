@@ -34,6 +34,12 @@ static func compare(player:Resource_container, event:Resource_container):
 			return false
 	return true
 
+func per_delta(scale):
+	var r = Resource_container.new()
+	for i in range(6):
+		r.basket[i] = basket[i] * scale
+	return r
+
 func scale(r:Resource_container):
 	for i in range(6):
 		basket[i] *= r.basket[i]/100

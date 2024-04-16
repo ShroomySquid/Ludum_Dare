@@ -54,6 +54,56 @@ texture = ExtResource("7_xlsae")
 
 [node name="event_text" type="Label" parent="."]
 custom_minimum_size = Vector2(800, 500)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -800.0
+offset_right = 1200.0
+offset_bottom = 500.0
+grow_horizontal = 0
+theme = SubResource("Theme_lswx8")
+theme_override_colors/font_color = Color(0.156863, 0.0431373, 0.0196078, 1)
+theme_override_colors/font_shadow_color = Color(0.741176, 0, 0.615686, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xx7rv")
+text = "You have decided to give your soul to me, so give up already.
+This is a big pile of text that makes no sense, so please stop reading
+it."
+autowrap_mode = 2
+justification_flags = 0
+
+[node name="lieutenant6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(154, 164)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_wenjf")
+
+[node name="lieutenant7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(254, 151)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_0u3hb")
+
+[node name="lieutenant8" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(175, 160)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_g7mmc")
+
+[node name="lieutenant9" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(139, 156)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_7u5jp")
+
+[node name="lieutenant10" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(175, 146)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_xlsae")
+
+[node name="event_text2" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 500)
 offset_left = 400.0
 offset_right = 1200.0
 offset_bottom = 500.0
