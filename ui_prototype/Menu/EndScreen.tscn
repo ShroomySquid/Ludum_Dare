@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba8rt35jlr4s3"]
+[gd_scene load_steps=8 format=3 uid="uid://cs1jrvrr5sgde"]
 
 [ext_resource type="Script" path="res://Menu/EndScreen.gd" id="1_mrpen"]
-[ext_resource type="Texture2D" uid="uid://cn4uwpr3kgr6w" path="res://brick.jpg" id="2_3h5de"]
+[ext_resource type="Texture2D" uid="uid://t2ht3jd5i540" path="res://png/MENU_PRINCIPAL.png" id="2_6fmvs"]
 [ext_resource type="Theme" uid="uid://sbmqosn2acr2" path="res://Menu/button_theme.tres" id="2_mna8s"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="3_esequ"]
 
@@ -29,7 +29,7 @@ script = ExtResource("1_mrpen")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(1795.59, 1051.47)
 scale = Vector2(2.66971, 2.2804)
-texture = ExtResource("2_3h5de")
+texture = ExtResource("2_6fmvs")
 
 [node name="FinalScore" type="Label" parent="."]
 layout_mode = 0
