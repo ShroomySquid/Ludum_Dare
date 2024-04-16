@@ -17,6 +17,11 @@ var new_cultist_counter = 0
 var is_paused = true
 var in_intro = true
 var starve_timer = 1
+var magic_modifier = 1
+var living_cost = 1
+var static_magic = 0
+var daily_income = Resource_container.new()
+var day = 0
 
 func _cultists_in_ritual(value: float):
 	if (is_paused == true):
@@ -56,6 +61,11 @@ func pauseMenu():
 
 func retry():
 	print("retry works")
+	magic_modifier = 1
+	living_cost = 1
+	static_magic = 0
+	daily_income = Resource_container.new()
+	day = 0
 	global_timer = 0
 	resources.set_re(Resources.r.CULTISTS, 20)
 	resources.set_re(Resources.r.MAGIC, 1000)
@@ -101,10 +111,11 @@ func _endTuto():
 func magic_gen(delta):
 	var m = resources.get_re(Resources.r.MAGIC)
 	var d = (m - cultists_in_ritual * 100)
-	if d <= -1000:
-		resources.sub_re(Resources.r.MAGIC, (d + 1000) * delta / 20)
+	if d <= (-1000 / magic_modifier):
+		resources.sub_re(Resources.r.MAGIC, (d + 1000 / magic_modifier) * delta / 20)
 	elif d > 0:
-		resources.sub_re(Resources.r.MAGIC, d * delta / 20)
+		resources.sub_re(Resources.r.MAGIC, d * delta / (20 / magic_modifier))
+	resources.add_re(Resources.r.MAGIC, delta * static_magic)
 
 func update_labels():
 	$cultist_label.text = "Cultists: " + str(available_cultists) + " / " + str(resources.get_re(Resources.r.CULTISTS))
@@ -150,7 +161,7 @@ func update_labels():
 
 func update_gold(delta):
 	resources.add_re(Resources.r.GOLD, 10 * delta * cultists_in_job)
-	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) + resources.get_re(Resources.r.PRISONERS) - cultists_in_job) * delta * 4)
+	resources.sub_re(Resources.r.GOLD, (resources.get_re(Resources.r.CULTISTS) + resources.get_re(Resources.r.PRISONERS) - cultists_in_job) * delta * 4 * living_cost)
 	if (resources.get_re(Resources.r.GOLD) <= 0):
 		starve_timer -= delta
 	else:
@@ -190,6 +201,9 @@ func update_timer(delta):
 		Engine.time_scale = 0
 		end_game.emit(resources.get_re(Resources.r.MAGIC))
 		end_screen.show()
+	if floor(day) != floor(global_timer / 360):
+		day = floor(global_timer / 360)
+		resources = Resource_container.combine(resources, daily_income)
 
 func _process(delta):
 	update_labels()
