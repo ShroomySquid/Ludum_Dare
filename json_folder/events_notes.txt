@@ -1,9 +1,0 @@
-Event id 3 du ritual_master doit faire les bonus suivants:
-conclusion 1: rien de spécial
-conclusion 2: réduit les couts en magies des events de 25%
-conclusion 3: fait que les cultistes en trop assignés au rituel produit/rajoute de la magie.
-
-Event id 3 du ritual_master doit faire les bonus suivants:
-conclusion 1: cultistes et prisonniers coutent 25% moins de cash par seconde
-conclusion 2: +300 magie par journée (1 par seconde)
-conclusion 3: + 5% loyauté par journée
