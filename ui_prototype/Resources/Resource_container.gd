@@ -34,6 +34,6 @@ static func compare(player:Resource_container, event:Resource_container):
 			return false
 	return true
 
-func scale(s:int):
+func scale(r:Resource_container):
 	for i in range(6):
-		basket[i] *= s / 100
+		basket[i] *= r.basket[i]/100

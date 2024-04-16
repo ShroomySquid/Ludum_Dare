@@ -26,6 +26,7 @@ func _on_event_b1():
 	loaded_event.reward = loaded_event.r_1
 	loaded_event.timer = loaded_event.t_1
 	loaded_event.t_chosen = loaded_event.t_1
+	loaded_event.choice = 1
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -39,6 +40,7 @@ func _on_event_b2():
 	loaded_event.reward = loaded_event.r_2
 	loaded_event.timer = loaded_event.t_2
 	loaded_event.t_chosen = loaded_event.t_2
+	loaded_event.choice = 2
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -52,6 +54,7 @@ func _on_event_b3():
 	loaded_event.reward = loaded_event.r_3
 	loaded_event.timer = loaded_event.t_3
 	loaded_event.t_chosen = loaded_event.t_3
+	loaded_event.choice = 3
 	loaded_event.is_active = true
 	self.hide()
 	active = false
@@ -66,6 +69,23 @@ func load_event(e:Event_container):
 	
 
 func _on_event_pop_up_bubble_signal():
+	$lieutenant1.hide()
+	$lieutenant2.hide()
+	$lieutenant3.hide()
+	$lieutenant4.hide()
+	$lieutenant5.hide()
+	if (loaded_event.exclusive == 0):
+		$lieutenant1.show()
+	elif (loaded_event.exclusive == 1):
+		$lieutenant2.show()
+	elif (loaded_event.exclusive == 2):
+		$lieutenant3.show()
+	elif (loaded_event.exclusive == 3):
+		$lieutenant4.show()
+	elif (loaded_event.exclusive == 4):
+		$lieutenant5.show()
+	else:
+		$lieutenant1.show()
 	$event_text.text = loaded_event.event_text
 	$event_button1.load_cost(loaded_event.cost_1)
 	$event_button2.load_cost(loaded_event.cost_2)

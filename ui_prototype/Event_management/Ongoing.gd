@@ -18,6 +18,7 @@ var t_1
 var t_2
 var t_3
 var t_chosen = 0
+var choice = 0
 var is_active = false
 var is_placeholder = true
 var fail: Resource_container:

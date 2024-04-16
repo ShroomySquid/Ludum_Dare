@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtyp8htqy4fd2"]
+[gd_scene load_steps=12 format=3 uid="uid://dtyp8htqy4fd2"]
 
 [ext_resource type="Script" path="res://event_popup/event_button1.gd" id="1_5mu0g"]
 [ext_resource type="Script" path="res://event_popup/event_window1.gd" id="1_mxji7"]
 [ext_resource type="FontFile" uid="uid://c84yhbqspx8e3" path="res://font/Luminari-Regular.ttf" id="2_xx7rv"]
-[ext_resource type="Texture2D" uid="uid://c7hwdlp703dvo" path="res://png/lieutenant1_protrait.png" id="3_if23m"]
+[ext_resource type="Texture2D" uid="uid://d2lsopx1tj5r4" path="res://png/lieutenant1_portrait.png" id="3_wenjf"]
+[ext_resource type="Texture2D" uid="uid://yugm6tmjqkho" path="res://png/lieutenant2_portrait.png" id="4_0u3hb"]
 [ext_resource type="Script" path="res://event_popup/event_button2.gd" id="4_bigwu"]
 [ext_resource type="Script" path="res://event_popup/event_button3.gd" id="5_dx7kw"]
+[ext_resource type="Texture2D" uid="uid://k8fbdk5s82su" path="res://png/lieutenant3_portrait.png" id="5_g7mmc"]
+[ext_resource type="Texture2D" uid="uid://cjibq2yhb8o72" path="res://png/lieutenant4_portrait.png" id="6_7u5jp"]
+[ext_resource type="Texture2D" uid="uid://c3bcw7ipk50gh" path="res://png/lieutenant5_portrait.png" id="7_xlsae"]
 
 [sub_resource type="Theme" id="Theme_lswx8"]
 
@@ -18,10 +22,41 @@ always_on_top = true
 theme_override_fonts/title_font = ExtResource("2_xx7rv")
 script = ExtResource("1_mxji7")
 
+[node name="lieutenant1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(154, 164)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_wenjf")
+
+[node name="lieutenant2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(254, 151)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_0u3hb")
+
+[node name="lieutenant3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(175, 160)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_g7mmc")
+
+[node name="lieutenant4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(139, 156)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_7u5jp")
+
+[node name="lieutenant5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(175, 146)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_xlsae")
+
 [node name="event_text" type="Label" parent="."]
 custom_minimum_size = Vector2(800, 500)
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 400.0
+offset_right = 1200.0
+offset_bottom = 500.0
 theme = SubResource("Theme_lswx8")
 theme_override_colors/font_color = Color(0.156863, 0.0431373, 0.0196078, 1)
 theme_override_colors/font_shadow_color = Color(0.741176, 0, 0.615686, 1)
@@ -32,11 +67,6 @@ This is a big pile of text that makes no sense, so please stop reading
 it."
 autowrap_mode = 2
 justification_flags = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(305, 135)
-scale = Vector2(0.24, 0.24)
-texture = ExtResource("3_if23m")
 
 [node name="event_button1" type="Button" parent="."]
 offset_left = 400.0
@@ -71,8 +101,8 @@ offset_bottom = 40.0
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="b1_pressed" from="event_button1" to="." method="_on_event_button_1_b_1_pressed"]
-[connection signal="pressed" from="event_button1" to="." method="_on_event_b1"]
 [connection signal="pressed" from="event_button1" to="." method="_on_event_button_1_pressed"]
+[connection signal="pressed" from="event_button1" to="." method="_on_event_b1"]
 [connection signal="pressed" from="event_button1" to="event_button1" method="_on_pressed"]
 [connection signal="b2_pressed" from="event_button2" to="." method="_on_event_button_2_b_2_pressed"]
 [connection signal="pressed" from="event_button2" to="." method="_on_event_b2"]

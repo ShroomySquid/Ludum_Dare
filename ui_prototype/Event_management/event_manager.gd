@@ -2,6 +2,7 @@ extends Control
 
 @onready var popups = [$"../event_pop_up", $"../event_pop_up2", $"../event_pop_up3", $"../event_pop_up4", $"../event_pop_up5"]
 var ongoing_event = [Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new(), Event_container.new()]
+var cost_modifier = Resource_container.new([100, 100, 100, 100, 100, 100])
 
 var event_chance = 100
 var t = 0
@@ -24,6 +25,11 @@ func _ready():
 		print(str(i))
 	pass
 
+
+func apply_cost_modifier(e: Event_container):
+	e.cost_1.scale(cost_modifier)
+	e.cost_2.scale(cost_modifier)
+	e.cost_3.scale(cost_modifier)
 
 func generate_pool():
 	for i in range(10):
@@ -58,6 +64,14 @@ func _process(delta):
 			else:
 				print("event " + str(i) + " failed (" + ongoing_event[i].event_text + ")")
 			$"../Conclusion_window".add_event(ongoing_event[i])
+			if ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 2:
+				cost_modifier.set_re(Resources.r.MAGIC, 75)
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 3:
+				$"../UI".magic_modifier = 2
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 1:
+				$"../UI".living_costs *= 0.5
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 2:
+				pass
 			ongoing_event[i] = Event_container.new()
 	if t > 1:
 		t -= 1
