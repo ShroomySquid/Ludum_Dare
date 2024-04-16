@@ -20,7 +20,7 @@ var starve_timer = 1
 var magic_modifier = 1
 var living_cost = 1
 var gill_bates_flag = false
-var targaret_matcher_falg = false
+var targaret_matcher_flag = false
 var daily_income = Resource_container.new()
 var static_resources = Resource_container.new()
 var day = 0
@@ -72,7 +72,7 @@ func retry():
 	global_timer = 0
 	insurance_flag = false
 	gill_bates_flag = false
-	targaret_matcher_falg = false
+	targaret_matcher_flag = false
 	resources.set_re(Resources.r.CULTISTS, 20)
 	resources.set_re(Resources.r.MAGIC, 1000)
 	resources.set_re(Resources.r.LOYALTY, 100)
@@ -121,7 +121,7 @@ func magic_gen(delta):
 		resources.sub_re(Resources.r.MAGIC, (d + 1000 / magic_modifier) * delta / 20)
 	elif d > 0:
 		resources.sub_re(Resources.r.MAGIC, d * delta / (20 / magic_modifier))
-	if targaret_matcher_falg:
+	if targaret_matcher_flag:
 		resources.add_re(Resources.r.MAGIC, (cultists_in_job / 10) * delta)
 
 func update_labels():

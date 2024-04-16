@@ -13,7 +13,12 @@ func _ready():
 func load_e():
 	active = true
 	loaded_event = queue[0]
-	$speech.text = loaded_event.conclusion_1
+	if loaded_event.choice == 1:
+		$speech.text = loaded_event.conclusion_1
+	if loaded_event.choice == 2:
+		$speech.text = loaded_event.conclusion_2
+	if loaded_event.choice == 3:
+		$speech.text = loaded_event.conclusion_3
 	self.show()
 
 func conclude():
