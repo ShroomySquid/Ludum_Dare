@@ -76,25 +76,25 @@ func _process(delta):
 				print("event " + str(i) + " failed (" + ongoing_event[i].event_text + ")")
 			print("I'm a dumbass")
 			$"../Conclusion_window".add_event(ongoing_event[i])
-			if ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 2:
+			if ongoing_event[i].exclusive == 0 && ongoing_event[i].event_id == 3 && ongoing_event[i].choice == 2:
 				cost_modifier.set_re(Resources.r.MAGIC, 75)
-			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 3:
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].event_id == 3 && ongoing_event[i].choice == 3:
 				$"../UI".magic_modifier = 2
-			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 1:
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].event_id == 5 && ongoing_event[i].choice == 1:
 				$"../UI".living_costs *= 0.5
-			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 2:
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].event_id == 5 && ongoing_event[i].choice == 2:
 				$"../UI".static_resources.add_re(Resources.r.MAGIC, 1)
-			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].id == 5 && ongoing_event[i].choice == 3:
+			elif ongoing_event[i].exclusive == 0 && ongoing_event[i].event_id == 5 && ongoing_event[i].choice == 3:
 				$"../UI".daily_income = Resource_container.combine($"../UI".daily_income, Resource_container.new([0, 0, 5, 0, 0, 0]))
-			elif ongoing_event[i].exclusive == 3 && ongoing_event[i].id == 4 && ongoing_event[i].choice == 1:
+			elif ongoing_event[i].exclusive == 3 && ongoing_event[i].event_id == 4 && ongoing_event[i].choice == 1:
 				$"../UI".insurance_flag = true
-			elif ongoing_event[i].exclusive == 1 && ongoing_event[i].id == 3 && ongoing_event[i].choice == 2:
+			elif ongoing_event[i].exclusive == 1 && ongoing_event[i].event_id == 3 && ongoing_event[i].choice == 2:
 				$"../UI".static_resources.add_re(Resources.r.CULTISTS, 2/10)
 				$"../UI".static_resources.add_re(Resources.r.GOLD, 1000/10)
 				$"../UI".static_resources.add_re(Resources.r.MAGIC, 500/10)
-			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].id == 6 && ongoing_event[i].choice == 1:
+			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].event_id == 6 && ongoing_event[i].choice == 1:
 				$"../UI".gill_bates_flag = true
-			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].id == 6 && ongoing_event[i].choice == 2:
+			elif ongoing_event[i].exclusive == 2 && ongoing_event[i].event_id == 6 && ongoing_event[i].choice == 2:
 				$"../UI".targaret_matcher_flag = true
 			ongoing_event[i] = Event_container.new()
 	if t > 1:
