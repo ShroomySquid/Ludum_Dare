@@ -19,7 +19,7 @@ var texts = [
 
 const intro_first = "WELCOME
 
-You are <player_name>"
+You are an eldritch god"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
